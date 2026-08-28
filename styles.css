@@ -242,6 +242,17 @@ a.ch-item{display:block;font-size:13.5px;line-height:1.5;border-top:1px solid va
 .ch-item .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
 .ch-item .go{color:var(--blue)}
 .ch-item .d{color:var(--sec)}
+/* Language strip — the YouTube network by language (home, Watch section) */
+.lang-strip{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+a.lang-cell{display:block;border-left:1px solid var(--ink);padding:26px 22px 30px;color:var(--ink);text-align:left}
+a.lang-cell:hover{background:var(--quiet);opacity:1}
+.lang-cell .logo{width:56px;height:56px;object-fit:contain;display:block;filter:grayscale(1);transition:filter .35s ease}
+a.lang-cell:hover .logo{filter:grayscale(0)}
+.lang-cell .k{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.lang-cell .t{font-family:var(--anton);font-size:20px;text-transform:uppercase;margin-top:6px;line-height:1.1}
+.lang-cell .d{font-size:12.5px;color:var(--sec);margin-top:6px;line-height:1.5}
+.lang-cell .go{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+
 .fast-cards .mini-card{display:flex;flex-direction:column}
 .mini-card .meta{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .mini-card .link{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);display:inline-block}
