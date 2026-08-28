@@ -95,7 +95,7 @@ body.locked{overflow:hidden}
 .marquee--rule{border-top:1px solid rgba(255,255,255,.25)}
 
 /* Stat strips */
-.stats{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.stats{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .stats>div{border-left:1px solid var(--ink);padding:26px 22px 30px}
 .stats .v{font-family:var(--anton);font-size:clamp(56px,6.5vw,96px);line-height:.95;color:var(--ink)}
 .stats .v.blue{color:var(--blue)}
@@ -166,9 +166,10 @@ footer{border-top:2px solid var(--ink);padding:24px}
 .reel-ctrl{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px var(--gutter) 0}
 .reel-btn{width:44px;height:40px;background:#fff;border:1px solid var(--ink);cursor:pointer;font-family:var(--mono);font-size:15px;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s}
 .reel-btn:hover{background:var(--ink);color:#fff}
-.reel-dots{display:flex;gap:10px;align-items:center}
-.reel-dot{width:7px;height:7px;border:none;padding:0;cursor:pointer;background:#d2d2d7;transition:background .4s}
-.reel-dot.on{background:var(--blue)}
+.reel-dots{display:flex;gap:2px;align-items:center}
+.reel-dot{width:22px;height:22px;border:none;padding:0;cursor:pointer;background:transparent;display:grid;place-items:center}
+.reel-dot::before{content:'';width:7px;height:7px;background:#d2d2d7;transition:background .4s}
+.reel-dot.on::before{background:var(--blue)}
 
 /* Intro */
 .intro{padding:90px 24px 110px;text-align:center}
@@ -278,7 +279,7 @@ a.lang-cell:hover .logo{filter:grayscale(0)}
 @media(max-width:640px){.wall-masonry{columns:2}}
 a.wall-card{display:block;background:#fff;color:var(--ink);margin:0 0 14px;break-inside:avoid}
 a.wall-card:hover{opacity:1}
-.wall-card img{width:100%;display:block;background:var(--ph)}
+.wall-card img{width:100%;height:auto;display:block;background:var(--ph)}
 .wall-card .wn{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
 .wall-card .wn .ar{transition:transform .25s ease}
 a.wall-card:hover .wn{color:var(--blue)}
@@ -337,7 +338,7 @@ a.slate-card:hover{opacity:1}
 .lib-wrap{max-width:1240px;margin:0 auto}
 .count{text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--sec);margin-bottom:38px}
 .lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:26px 22px}
-.film{animation:fadeIn .6s ease both}
+.film{animation:fadeIn .6s ease both;content-visibility:auto;contain-intrinsic-size:auto 150px auto 320px;min-width:0}
 .film .poster{transition:filter .35s ease,transform .35s ease}
 .film:hover .poster{transform:translateY(-4px)}
 .film-cap{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:9px}
@@ -419,7 +420,7 @@ a.slate-card:hover{opacity:1}
 .field{display:flex;flex-direction:column;gap:7px}
 .field label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sec)}
 .field input,.field select,.field textarea{border:1px solid var(--ink);border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;outline-color:var(--blue)}
-.field select{appearance:none}
+.field select{appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2210%22%20height=%226%22%3E%3Cpath%20d=%22M0%200l5%206%205-6z%22%20fill=%22%230a0a0a%22/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 16px center;padding-right:38px}
 .field textarea{resize:vertical}
 .form-note{margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--faint)}
 .detail-stack{margin-top:34px;display:flex;flex-direction:column;gap:26px}
@@ -449,6 +450,40 @@ a.slate-card:hover{opacity:1}
 .faq.open .faq-q .sign::before{content:'−'}
 .faq-a{display:none;margin:0;padding:0 4px 26px;font-size:15px;line-height:1.7;color:var(--body-c);max-width:780px}
 .faq.open .faq-a{display:block;animation:fadeIn .4s ease both}
+
+/* ============================================================
+   Touch devices — hover reveals have no trigger, so interactive
+   imagery renders in colour; hover fills are inert anyway
+   ============================================================ */
+@media (hover:none){
+  .poster,.watch img,.film .poster,.lang-cell .logo,.fast-cards .mini-card .logo{filter:none}
+  .film:hover .poster{transform:none}
+}
+
+/* ============================================================
+   Mobile
+   ============================================================ */
+@media (max-width:640px){
+  .page-head{padding-top:120px}
+  .band{padding:80px 24px}
+  .sec{padding-bottom:80px}
+  .reel-tag{font-size:10.5px;padding:8px 12px;gap:10px}
+  .watch-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .contact-cols{gap:56px}
+  .founder-cols{gap:48px}
+  .div-cols{gap:36px}
+  .fbtn{padding:11px 16px}
+  .div-chips a{padding:11px 16px}
+  .filter-row{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .filter-row::-webkit-scrollbar{display:none}
+  .fbtn{flex:0 0 auto}
+  .field input,.field select,.field textarea{font-size:16px}
+  .cta-box{padding:48px 24px}
+  .lib-grid{grid-template-columns:repeat(2,1fr);gap:20px 14px}
+}
+@media (max-width:350px){
+  .hero-mark{font-size:68px}
+}
 
 /* ============================================================
    Motion preferences & capture helper
