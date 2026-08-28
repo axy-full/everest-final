@@ -256,7 +256,7 @@ a.ch-item{display:block;font-size:13.5px;line-height:1.5;border-top:1px solid va
 .lang-strip{margin-top:24px;grid-auto-columns:clamp(250px,23vw,300px)}
 a.lang-cell{display:block;border-left:1px solid var(--ink);padding:26px 22px 30px;color:var(--ink);text-align:left}
 a.lang-cell:hover{background:var(--quiet);opacity:1}
-.lang-cell .logo{width:56px;height:56px;object-fit:contain;display:block;filter:grayscale(1);transition:filter .35s ease}
+.lang-cell .logo{width:min(210px,100%);height:auto;display:block;filter:grayscale(1);transition:filter .35s ease}
 a.lang-cell:hover .logo{filter:grayscale(0)}
 .lang-cell .k{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 .lang-cell .t{font-family:var(--anton);font-size:20px;text-transform:uppercase;margin-top:6px;line-height:1.1}
