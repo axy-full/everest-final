@@ -122,6 +122,15 @@
     });
   });
 
+  /* Social wall — load more */
+  var wallMore = document.getElementById('wall-more');
+  if (wallMore) {
+    wallMore.addEventListener('click', function () {
+      document.getElementById('wall').classList.add('expanded');
+      document.getElementById('wall-more-row').style.display = 'none';
+    });
+  }
+
   /* Decade filter (films) */
   var libGrid = document.getElementById('lib-grid');
   if (libGrid) {
