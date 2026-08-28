@@ -109,6 +109,19 @@
     restart();
   }
 
+  /* Horizontal strip scrollers */
+  document.querySelectorAll('[data-strip-prev], [data-strip-next]').forEach(function (btn) {
+    var id = btn.getAttribute('data-strip-prev') || btn.getAttribute('data-strip-next');
+    var strip = document.getElementById(id);
+    if (!strip) return;
+    var dir = btn.hasAttribute('data-strip-prev') ? -1 : 1;
+    btn.addEventListener('click', function () {
+      var cell = strip.firstElementChild;
+      var w = cell ? cell.getBoundingClientRect().width : 280;
+      strip.scrollBy({ left: dir * w * 2, behavior: reduced ? 'auto' : 'smooth' });
+    });
+  });
+
   /* Decade filter (films) */
   var libGrid = document.getElementById('lib-grid');
   if (libGrid) {

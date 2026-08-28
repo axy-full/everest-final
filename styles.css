@@ -110,6 +110,7 @@ body.locked{overflow:hidden}
 .cells p,.cells .cd{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--sec)}
 a.cell{display:block;color:var(--ink)}
 a.cell:hover{background:var(--quiet);opacity:1}
+.cell .go{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 
 /* Framed cards */
 .frame-card{border:1px solid var(--ink);padding:26px}
@@ -242,8 +243,17 @@ a.ch-item{display:block;font-size:13.5px;line-height:1.5;border-top:1px solid va
 .ch-item .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
 .ch-item .go{color:var(--blue)}
 .ch-item .d{color:var(--sec)}
-/* Language strip — the YouTube network by language (home, Watch section) */
-.lang-strip{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+/* Horizontal scroll strips — rule-bounded rows that overflow sideways */
+.strip-scroll{display:grid;grid-auto-flow:column;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);scrollbar-width:thin;scrollbar-color:var(--ink) var(--quiet)}
+.strip-scroll::-webkit-scrollbar{height:4px}
+.strip-scroll::-webkit-scrollbar-thumb{background:var(--ink)}
+.strip-scroll::-webkit-scrollbar-track{background:var(--quiet)}
+.strip-scroll>*{scroll-snap-align:start}
+.strip-ctrl{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px}
+.values-strip{grid-auto-columns:minmax(250px,1fr)}
+
+/* Network strip — the 13-channel YouTube network (home, Watch section) */
+.lang-strip{margin-top:24px;grid-auto-columns:clamp(250px,23vw,300px)}
 a.lang-cell{display:block;border-left:1px solid var(--ink);padding:26px 22px 30px;color:var(--ink);text-align:left}
 a.lang-cell:hover{background:var(--quiet);opacity:1}
 .lang-cell .logo{width:56px;height:56px;object-fit:contain;display:block;filter:grayscale(1);transition:filter .35s ease}
