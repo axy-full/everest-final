@@ -19,6 +19,7 @@ scroll-driven fade-ups (`animation-timeline: view()`, degrades to one-shot fades
 | `/about`   | `about.html`   | 64vh grayscale hero, journey + founder's note expanders, what-we-do, values, media room |
 | `/jallosh` | `jallosh.html` | Black hero with logo, statement box, on-every-screen cells, platform placeholders |
 | `/contact` | `contact.html` | mailto-composing form, division chips, 5 help topics, 14-item FAQ accordion |
+| `/fast`    | `fast.html`    | Standalone FAST channels page (V3 treatment): 8 channel cards, platform chips, YouTube cross-sell band, Carry-Everest-FAST CTA |
 
 All copy migrated verbatim from the previous deployment (everest-site-nu.vercel.app) via the
 handoff. Everything self-hosted in `assets/` (~127MB) — nothing hotlinks the old deployments:
@@ -37,7 +38,8 @@ handoff. Everything self-hosted in `assets/` (~127MB) — nothing hotlinks the o
   replaced with alive tiles from the old site's own curated grid (`N2hEFyXAe0A`, `fywuFgnYYfM`
   new-launch slots, `DRCpiuuuQnw` Baghtos Kay Mujara Kar for the movies-on-demand slot).
 - `assets/logos/` — full brand set (Everest color/white/icon, Jallosh logo + banner, 13 YouTube
-  channel logos; the channel logos are unused by this design but kept as site data).
+  channel logos; four of them — Marathi, Hindi Cinema, Bhojpuri, Gujarati — power the home
+  page's four-language network strip, the rest are kept as site data).
 
 ## Run locally
 
