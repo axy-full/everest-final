@@ -264,6 +264,8 @@ a.lang-cell:hover .logo{filter:grayscale(0)}
 .lang-cell .go{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 
 .fast-cards .mini-card{display:flex;flex-direction:column}
+.fast-cards .mini-card .logo{width:min(200px,100%);height:auto;display:block;margin-bottom:16px;filter:grayscale(1);transition:filter .35s ease}
+.fast-cards .mini-card:hover .logo{filter:grayscale(0)}
 .mini-card .meta{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .mini-card .link{margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);display:inline-block}
 .chip-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
