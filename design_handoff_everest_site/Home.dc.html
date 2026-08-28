@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0A4DA6;text-decoration:none}
+a:hover{opacity:.75}
+::selection{background:#0A4DA6;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%222%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22200%22%20height=%22200%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px"></div>
+
+<nav style="position:absolute;top:0;left:0;right:0;z-index:80">
+  <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:12px 10px">
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+    </button>
+  </div>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:fadeIn .25s ease both;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+      <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="background:none;border:none;cursor:pointer;font-size:30px;font-weight:300;color:#0a0a0a;line-height:1;padding:6px 12px">×</button>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:7vh clamp(20px,3.5vw,40px) 40px;display:flex;flex-direction:column;align-items:flex-start">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0A4DA6"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/01</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Home</span></a>
+      <a href="Films.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/02</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Films</span></a>
+      <a href="About.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/03</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">About</span></a>
+      <a href="Jallosh.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/04</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Jallosh</span></a>
+      <a href="Contact.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0 16px;border-bottom:1px solid #0a0a0a;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/05</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Contact</span></a>
+      <a href="mailto:info@everestent.in" style="margin-top:5vh;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:#6e6e73">INFO@EVERESTENT.IN</a>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="Hero" style="padding:96px 0 0;background:#fff">
+  <div style="text-align:center;padding:0 16px">
+    <div style="font-family:'Anton',sans-serif;font-size:clamp(84px,16.5vw,252px);line-height:.9;letter-spacing:.01em;color:#0a0a0a;text-transform:uppercase">Everest<span style="color:#0A4DA6;font-size:.32em;vertical-align:.5em"> ▲</span></div>
+    <div style="max-width:1200px;margin:26px auto 0;border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a;padding:10px 4px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0a0a0a"><span>( A Marathi &amp; Hindi entertainment house )</span><span style="color:#0A4DA6">Mumbai ▲ Since 2000</span><span>260+ films · 50 nataks · 800+ songs</span></div>
+  </div>
+  <div style="background:#0a0a0a;margin-top:34px;padding:clamp(18px,2.6vw,34px) 0;overflow:hidden">
+    <div style="overflow:hidden;min-height:min(37vw,560px)">
+      <div style="display:flex;gap:22px;align-items:stretch;padding-left:calc(50% - min(40vw,600px));transform:{{ trackX }};transition:transform .95s cubic-bezier(.32,.72,0,1)">
+        <sc-for list="{{ heroSlides }}" as="s" hint-placeholder-count="0">
+          <div role="img" aria-label="{{ s.alt }}" style="flex:0 0 auto;width:min(80vw,1200px);aspect-ratio:21/10;background-image:url('{{ s.src }}');background-size:cover;background-position:center;background-color:#161617;position:relative;outline:1px solid rgba(255,255,255,.3);outline-offset:-1px;opacity:{{ s.o }};transform:{{ s.sc }};transition:opacity .95s ease,transform .95s cubic-bezier(.32,.72,0,1)">
+            <div style="position:absolute;left:0;bottom:0;display:flex;align-items:baseline;gap:14px;background:#0a0a0a;padding:10px 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#fff">{{ s.t }}</span><span style="color:#6FA8FF">{{ s.y }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px clamp(20px,3.5vw,40px) 0">
+    <button type="button" onClick="{{ prevSlide }}" aria-label="Previous slide" style="width:44px;height:40px;background:#fff;border:1px solid #0a0a0a;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:15px;color:#0a0a0a;display:flex;align-items:center;justify-content:center" style-hover="background:#0a0a0a;color:#fff">←</button>
+    <div style="display:flex;gap:10px;align-items:center">
+      <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="7">
+        <button type="button" onClick="{{ d.onClick }}" aria-label="Go to slide" style="width:7px;height:7px;border:none;padding:0;cursor:pointer;background:{{ d.bg }};transition:background .4s"></button>
+      </sc-for>
+    </div>
+    <button type="button" onClick="{{ nextSlide }}" aria-label="Next slide" style="width:44px;height:40px;background:#fff;border:1px solid #0a0a0a;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:15px;color:#0a0a0a;display:flex;align-items:center;justify-content:center" style-hover="background:#0a0a0a;color:#fff">→</button>
+  </div>
+</header>
+
+<section data-screen-label="Intro" style="padding:90px 24px 110px;text-align:center">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( Stories that reach the summit )</div>
+    <h1 style="margin:20px auto 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(46px,7vw,108px);line-height:.94;letter-spacing:.005em;color:#0a0a0a;text-transform:uppercase;text-wrap:balance">Stories that reach the summit.</h1>
+    <p style="margin:28px auto 0;max-width:620px;font-size:17px;line-height:1.6;color:#424245">A Marathi &amp; Hindi entertainment house — we produce original cinema, curate a collection of 260+ films, 50 iconic Nataks and 800+ songs, and stream to every screen.</p>
+    <div style="display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <a href="Films.dc.html" style="display:inline-flex;align-items:center;gap:12px;background:#0a0a0a;color:#fff;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Explore our films →</a>
+      <a href="About.dc.html" style="display:inline-flex;align-items:center;gap:12px;border:1px solid #0a0a0a;color:#0a0a0a;padding:15px 28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0a0a0a;color:#fff;opacity:1">Our story</a>
+    </div>
+  </div>
+</section>
+
+<div data-screen-label="Marquee" style="background:#0a0a0a;overflow:hidden;padding:16px 0">
+  <div style="display:flex;width:max-content;animation:marq 30s linear infinite">
+    <span style="font-family:'Anton',sans-serif;font-size:26px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Production <span style="color:#6FA8FF">▲</span> Syndication <span style="color:#6FA8FF">▲</span> Digital <span style="color:#6FA8FF">▲</span> Music <span style="color:#6FA8FF">▲</span> Production <span style="color:#6FA8FF">▲</span> Syndication <span style="color:#6FA8FF">▲</span> Digital <span style="color:#6FA8FF">▲</span> Music <span style="color:#6FA8FF">▲</span> </span>
+    <span aria-hidden="true" style="font-family:'Anton',sans-serif;font-size:26px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Production <span style="color:#6FA8FF">▲</span> Syndication <span style="color:#6FA8FF">▲</span> Digital <span style="color:#6FA8FF">▲</span> Music <span style="color:#6FA8FF">▲</span> Production <span style="color:#6FA8FF">▲</span> Syndication <span style="color:#6FA8FF">▲</span> Digital <span style="color:#6FA8FF">▲</span> Music <span style="color:#6FA8FF">▲</span> </span>
+  </div>
+</div>
+
+<section data-screen-label="Stats" style="padding:74px 24px 90px">
+  <div style="max-width:1200px;margin:0 auto;border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 40%">
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">25+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Years in motion</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0A4DA6">260+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Films in the collection</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">50</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Iconic Nataks</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">800+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Songs</div></div>
+  </div>
+</section>
+
+<section data-screen-label="Who we are" style="padding:40px 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Who we are )</span><span style="color:#6e6e73">/ 01</span></div>
+    <div style="max-width:900px;margin:0 auto;text-align:center;padding-top:46px;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;letter-spacing:.005em;color:#0a0a0a;text-transform:uppercase;text-wrap:balance">We tell Maharashtra's stories — and carry them to the world.</h2>
+      <p style="margin:30px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">Founded in 2000, Everest Entertainment is one of Maharashtra's leading media and entertainment companies — and the home of Marathi storytelling.</p>
+      <sc-if value="{{ whoOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:fadeIn .5s ease both">
+          <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">With a rich library of over <strong>260 films</strong>, <strong>50 iconic dramas (Nataks)</strong>, <strong>800+ songs</strong>, and one of India's largest collections of Marathi content, we create, produce, distribute, and showcase stories that entertain audiences across theatres, television, digital platforms, and beyond.</p>
+          <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">And now through <strong>JALLOSH</strong> — our consumer-facing brand spanning FAST Channels, Amazon Prime Video Channels, and OTT — we will bring together the entire Marathi entertainment ecosystem, creating a seamless destination for audiences to discover, enjoy, and celebrate Marathi stories, music, and culture.</p>
+        </div>
+      </sc-if>
+      <div style="display:flex;gap:30px;justify-content:center;align-items:center;margin-top:30px">
+        <button type="button" onClick="{{ toggleWho }}" style="background:none;border:none;padding:0;cursor:pointer;color:#0A4DA6;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">{{ whoLabel }}</button>
+        <a href="About.dc.html" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">More about us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Divisions" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( What we do )</span><span style="color:#6e6e73">/ 02</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">Four divisions, one summit.</h2>
+      <p style="margin:22px auto 0;max-width:540px;font-size:17px;line-height:1.6;color:#424245">Everything a story needs to be made, seen and heard — under one roof.</p>
+    </div>
+
+    <div style="margin-top:56px;border-top:1px solid #0a0a0a">
+      <!-- 01 PRODUCTION -->
+      <div style="border-bottom:1px solid #0a0a0a">
+        <div onClick="{{ toggleProd }}" role="button" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:26px 4px;cursor:pointer;flex-wrap:wrap" style-hover="background:#f5f5f7">
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,52px);line-height:1;color:#0A4DA6;min-width:70px">01</span>
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(28px,3.4vw,46px);line-height:1;text-transform:uppercase;color:#0a0a0a;flex:0 0 auto">Production</span>
+          <span style="flex:1 1 260px;font-size:14.5px;color:#6e6e73;line-height:1.5">Original Marathi &amp; Hindi films, dramas and comedies — developed, shot and finished in-house.</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:26px;color:#0A4DA6;line-height:1">{{ prodSign }}</span>
+        </div>
+        <sc-if value="{{ prodOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 4px 72px;animation:fadeIn .5s ease both">
+            <div style="display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start">
+              <img src="https://everest-site-nu.vercel.app/assets/posters/me-shivajiraje.jpg" alt="Mee Shivajiraje Bhosale Boltoy (2009) — Everest's flagship debut production" style="flex:0 0 250px;width:250px;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px">
+              <div style="flex:1 1 460px;min-width:300px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Original cinema, made in Maharashtra )</div>
+                <h3 style="margin:14px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;color:#0a0a0a">From script to the big screen.</h3>
+                <p style="margin:18px 0 0;font-size:15.5px;line-height:1.68;color:#424245">It all started in 2009 with <em>Mee Shivajiraje Bhosale Boltoy</em> — Mahesh Manjrekar's ambitiously written script, our first venture into production. It went on to become the highest-grossing Marathi film of its time, and a game-changer for everything that followed.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Since then, Everest has produced <strong>23 feature films</strong> across a span of innovative, meaningful and clutter-breaking work — from <em>Happy Journey</em> (a fantasy between siblings) and <em>Coffee Ani Barach Kahi</em> (the unusual romcom that became a cult classic), to <em>Tukaram</em> (a state-award-winning biopic of the revered saint), <em>Aajcha Divas Majha</em> (winner of the National Award for Best Feature Film in Marathi), the much-loved <em>Mumbai Pune Mumbai</em> franchise starring Swapnil Joshi &amp; Mukta Barve, and <em>Amhi Doghi</em> — a progressive adaptation of Gauri Deshpande's story.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">The slate has earned <strong>3 National Awards</strong>, <strong>15 State Awards</strong>, and during the pandemic our little gem <em>Picasso</em> premiered directly on Amazon Prime and went on to earn a special mention at the <strong>67th National Film Awards</strong>. The mission stays the same: release three to five new films a year, owned end-to-end from script through marketing.</p>
+                <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 32px">
+                  <sc-for list="{{ prodCraft }}" as="c" hint-placeholder-count="4">
+                    <div style="border-top:1px solid #0a0a0a;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A4DA6;letter-spacing:.08em">{{ c.n }}</span><div style="font-weight:600;font-size:14.5px;margin-top:6px">{{ c.t }}</div><div style="font-size:13.5px;color:#6e6e73;line-height:1.5;margin-top:4px">{{ c.d }}</div></div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( A unique distinction — backing first-time directors )</div>
+                  <p style="margin:10px 0 0;font-size:14px;color:#6e6e73">Nine debuts launched, a tenth on the way — a quiet pillar of the Everest production model.</p>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 28px">
+                    <sc-for list="{{ directors }}" as="d" hint-placeholder-count="10">
+                      <div style="font-size:13.5px;line-height:1.5;display:flex;gap:10px"><span style="font-family:'IBM Plex Mono',monospace;color:#0A4DA6;font-size:11px;padding-top:2px">{{ d.n }}</span><span><strong>{{ d.name }}</strong><br><em style="color:#6e6e73">{{ d.f }}</em></span></div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Next from the slate — coming soon )</div>
+                  <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px 28px">
+                    <sc-for list="{{ comingSoon }}" as="cs" hint-placeholder-count="3">
+                      <div style="border-top:1px solid #0a0a0a;padding-top:12px"><div style="font-weight:700;font-size:15px">{{ cs.t }}</div><div style="font-size:13.5px;color:#6e6e73;line-height:1.55;margin-top:4px">{{ cs.d }}</div></div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;border-top:1px solid #0a0a0a;padding-top:24px">
+                  <sc-for list="{{ prodStats }}" as="s" hint-placeholder-count="4">
+                    <div><div style="font-family:'Anton',sans-serif;font-size:34px;line-height:1;color:#0a0a0a">{{ s.v }}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:6px">{{ s.l }}</div></div>
+                  </sc-for>
+                </div>
+                <a href="Films.dc.html" style="display:inline-block;margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">See the films →</a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- 02 SYNDICATION -->
+      <div style="border-bottom:1px solid #0a0a0a">
+        <div onClick="{{ toggleSynd }}" role="button" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:26px 4px;cursor:pointer;flex-wrap:wrap" style-hover="background:#f5f5f7">
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,52px);line-height:1;color:#0A4DA6;min-width:70px">02</span>
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(28px,3.4vw,46px);line-height:1;text-transform:uppercase;color:#0a0a0a;flex:0 0 auto">Syndication</span>
+          <span style="flex:1 1 260px;font-size:14.5px;color:#6e6e73;line-height:1.5">A 260+ film library licensed across satellite, cable and broadcast partners.</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:26px;color:#0A4DA6;line-height:1">{{ syndSign }}</span>
+        </div>
+        <sc-if value="{{ syndOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 4px 72px;animation:fadeIn .5s ease both">
+            <div style="display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start">
+              <img src="https://everest-site-nu.vercel.app/assets/posters/daagdi-chaal.jpg" alt="Daagdi Chaal — a marquee title in the Everest syndication library" style="flex:0 0 250px;width:250px;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px">
+              <div style="flex:1 1 460px;min-width:300px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( A library that travels )</div>
+                <h3 style="margin:14px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;color:#0a0a0a">260+ titles, one partner.</h3>
+                <p style="margin:18px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Over 260 film titles, licensed and distributed across satellite, cable and broadcast partners — a deep, rights-cleared catalogue ready for any window. Decades of Marathi &amp; Hindi cinema, organised, rights-cleared and ready to license — from marquee hits to evergreen library gems.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Blockbusters like <em>Zenda</em>, <em>Deool</em>, <em>Daagdi Chaal</em>, <em>Farzand</em>, <em>Bal Gandharva</em>, <em>Baban</em> and <em>Hirkani</em> share shelf-space with classic dramas (<em>Sakharam Binder</em>, <em>Shantata! Court Chalu Aahe</em>), national &amp; state award winners, and a deep popular-drama catalogue. Broadcasters come to Everest for breadth and ease — one relationship, one delivery pipeline, every window.</p>
+                <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 32px">
+                  <sc-for list="{{ syndWindows }}" as="w" hint-placeholder-count="4">
+                    <div style="border-top:1px solid #0a0a0a;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A4DA6;letter-spacing:.08em">{{ w.n }}</span><div style="font-weight:600;font-size:14.5px;margin-top:6px">{{ w.t }}</div><div style="font-size:13.5px;color:#6e6e73;line-height:1.5;margin-top:4px">{{ w.d }}</div></div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( A glimpse of the 260+ titles )</div>
+                  <p style="margin:10px 0 0;font-size:14px;color:#6e6e73">Categorised, rights-cleared and ready to programme — by genre, era or marquee value.</p>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+                    <sc-for list="{{ syndCats }}" as="c" hint-placeholder-count="6">
+                      <div style="border:1px solid #0a0a0a;padding:18px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">{{ c.k }}</div><div style="font-weight:700;font-size:15px;margin-top:6px">{{ c.t }}</div><div style="font-size:13px;color:#6e6e73;line-height:1.6;margin-top:6px">{{ c.list }}</div></div>
+                    </sc-for>
+                  </div>
+                  <p style="margin:16px 0 0;font-size:13.5px;color:#6e6e73">Plus <strong>40+ drama series</strong> and a deep popular-drama catalogue. <a href="Contact.dc.html">Get in touch</a> for the complete title list and screener access.</p>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Partners — taking Marathi entertainment everywhere )</div>
+                  <p style="margin:12px 0 0;font-size:14px;line-height:1.65;color:#424245">For over 25 years, Everest Entertainment has been a trusted content partner to India's leading broadcasters, OTT platforms, and music streaming services, taking the very best of Marathi entertainment to audiences across India and around the world.</p>
+                  <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#424245">Our long-standing partnerships reflect the strength of our catalogue, the quality of our content, and our commitment to delivering exceptional entertainment across every platform. As the media landscape continues to evolve, Everest remains at the forefront of content distribution — working closely with leading broadcast, streaming, and music platforms while expanding our consumer footprint through <a href="Jallosh.dc.html">JALLOSH</a>, our upcoming Marathi entertainment ecosystem spanning FAST Channels, Amazon Prime Video Channels, Smart TVs, and OTT.</p>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+                    <sc-for list="{{ syndPartners }}" as="p" hint-placeholder-count="3">
+                      <div style="border-top:1px solid #0a0a0a;padding-top:12px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">{{ p.k }}</div><div style="font-size:14px;font-weight:600;line-height:1.7;margin-top:4px">{{ p.list }}</div></div>
+                    </sc-for>
+                  </div>
+                  <p style="margin:14px 0 0;font-size:12.5px;color:#a1a1a6">Partner logos coming to this section — send over the approved logo pack and they'll go straight in.</p>
+                </div>
+                <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;border-top:1px solid #0a0a0a;padding-top:24px">
+                  <sc-for list="{{ syndStats }}" as="s" hint-placeholder-count="4">
+                    <div><div style="font-family:'Anton',sans-serif;font-size:34px;line-height:1;color:#0a0a0a">{{ s.v }}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:6px">{{ s.l }}</div></div>
+                  </sc-for>
+                </div>
+                <a href="Contact.dc.html" style="display:inline-block;margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Request the catalogue →</a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- 03 DIGITAL -->
+      <div style="border-bottom:1px solid #0a0a0a">
+        <div onClick="{{ toggleDig }}" role="button" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:26px 4px;cursor:pointer;flex-wrap:wrap" style-hover="background:#f5f5f7">
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,52px);line-height:1;color:#0A4DA6;min-width:70px">03</span>
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(28px,3.4vw,46px);line-height:1;text-transform:uppercase;color:#0a0a0a;flex:0 0 auto">Digital</span>
+          <span style="flex:1 1 260px;font-size:14.5px;color:#6e6e73;line-height:1.5">Streaming, OTT licensing and a YouTube presence that reaches millions every month.</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:26px;color:#0A4DA6;line-height:1">{{ digSign }}</span>
+        </div>
+        <sc-if value="{{ digOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 4px 72px;animation:fadeIn .5s ease both">
+            <div style="display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start">
+              <img src="https://everest-site-nu.vercel.app/assets/posters/sandook.jpg" alt="Sandook — one of the library titles streaming digitally" style="flex:0 0 250px;width:250px;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px">
+              <div style="flex:1 1 460px;min-width:300px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Every story, every screen )</div>
+                <h3 style="margin:14px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;color:#0a0a0a">From the theatre to the palm of your hand.</h3>
+                <p style="margin:18px 0 0;font-size:15.5px;line-height:1.68;color:#424245">The internet has changed the way we watch movies. A whole generation discovers our films online first. Everest was among the first independent studios with a content output deal at Amazon — and we've kept building from there.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">The slate streams across <strong>Amazon Prime Video</strong>, <strong>Netflix</strong>, <strong>JioCinema</strong> and <strong>Hungama</strong>, while our own YouTube home — <strong>Everest Marathi</strong> — has crossed <strong>2 million subscribers</strong>, making it one of the leading Marathi channels for music, clips and short-form content. Films play on smart TVs, laptops, tablets and mobiles, with subtitles for global audiences.</p>
+                <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 32px">
+                  <sc-for list="{{ digRun }}" as="r" hint-placeholder-count="4">
+                    <div style="border-top:1px solid #0a0a0a;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A4DA6;letter-spacing:.08em">{{ r.n }}</span><div style="font-weight:600;font-size:14.5px;margin-top:6px">{{ r.t }}</div><div style="font-size:13.5px;color:#6e6e73;line-height:1.5;margin-top:4px">{{ r.d }}</div></div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Where to watch — three homes, one library )</div>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
+                    <sc-for list="{{ digHomes }}" as="h" hint-placeholder-count="3">
+                      <div style="border:1px solid #0a0a0a;padding:18px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">{{ h.k }}</div><div style="font-weight:700;font-size:15px;margin-top:6px">{{ h.t }}</div><div style="font-size:13px;color:#424245;line-height:1.55;margin-top:6px">{{ h.d }}</div><div style="font-size:12.5px;color:#6e6e73;line-height:1.65;margin-top:10px">{{ h.list }}</div></div>
+                    </sc-for>
+                  </div>
+                  <p style="margin:14px 0 0;font-size:13.5px;color:#6e6e73">Also distributed across <strong>JioCinema</strong> and <strong>Hungama</strong>. Smart TVs, laptops, tablets, mobiles — wherever audiences are. <a href="https://www.youtube.com/@EverestTalkies01" target="_blank" rel="noopener">Open the channel →</a></p>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Everest on YouTube — thirteen channels, one publisher )</div>
+                  <p style="margin:10px 0 0;font-size:14px;color:#6e6e73">Thirteen sub-brand channels across Marathi, Hindi, Bhojpuri and Gujarati — film, comedy, devotional and music — together reaching millions of viewers every month. Every channel carries its own Everest sub-brand identity — pick your genre and press play.</p>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 28px">
+                    <sc-for list="{{ channels }}" as="ch" hint-placeholder-count="13">
+                      <a href="{{ ch.href }}" target="_blank" rel="noopener" style="display:block;font-size:13.5px;line-height:1.5;border-top:1px solid #0a0a0a;padding:10px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#0A4DA6">{{ ch.tag }}</span><br><strong>{{ ch.name }}</strong> <span style="color:#0A4DA6">→</span><br><span style="color:#6e6e73">{{ ch.d }}</span></a>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Everest FAST channels — eight feeds, around the clock )</div>
+                  <p style="margin:10px 0 0;font-size:14px;color:#6e6e73">Eight 24/7 linear channels built from the Everest library, curated under the <a href="Jallosh.dc.html">JALLOSH</a> brand and carried on free ad-supported streaming TV — a lean-back, television-like experience with no subscription needed.</p>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 28px">
+                    <sc-for list="{{ fastChannels }}" as="f" hint-placeholder-count="8">
+                      <div style="border-top:1px solid #0a0a0a;padding:10px 0;font-size:13.5px;line-height:1.5"><strong>{{ f.t }}</strong><br><span style="color:#6e6e73">{{ f.d }}</span></div>
+                    </sc-for>
+                  </div>
+                  <p style="margin:14px 0 0;font-size:12.5px;color:#a1a1a6">Where Everest FAST lives — Samsung TV Plus · JioTV · Tata Play · Pluto TV · Amagi · others — final platform list to be confirmed by the team.</p>
+                </div>
+                <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;border-top:1px solid #0a0a0a;padding-top:24px">
+                  <sc-for list="{{ digStats }}" as="s" hint-placeholder-count="4">
+                    <div><div style="font-family:'Anton',sans-serif;font-size:34px;line-height:1;color:#0a0a0a">{{ s.v }}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:6px">{{ s.l }}</div></div>
+                  </sc-for>
+                </div>
+                <a href="Contact.dc.html" style="display:inline-block;margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">License for digital →</a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- 04 MUSIC -->
+      <div style="border-bottom:1px solid #0a0a0a">
+        <div onClick="{{ toggleMusic }}" role="button" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:26px 4px;cursor:pointer;flex-wrap:wrap" style-hover="background:#f5f5f7">
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,52px);line-height:1;color:#0A4DA6;min-width:70px">04</span>
+          <span style="font-family:'Anton',sans-serif;font-size:clamp(28px,3.4vw,46px);line-height:1;text-transform:uppercase;color:#0a0a0a;flex:0 0 auto">Music</span>
+          <span style="flex:1 1 260px;font-size:14.5px;color:#6e6e73;line-height:1.5">Soundtracks and devotional catalogue, distributed across every digital music platform.</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:26px;color:#0A4DA6;line-height:1">{{ musicSign }}</span>
+        </div>
+        <sc-if value="{{ musicOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 4px 72px;animation:fadeIn .5s ease both">
+            <div style="display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start">
+              <img src="https://everest-site-nu.vercel.app/assets/posters/coffee.jpg" alt="Coffee Ani Barach Kahi — one of the soundtracks in the Everest music catalogue" style="flex:0 0 250px;width:250px;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px">
+              <div style="flex:1 1 460px;min-width:300px">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( The sound behind the story )</div>
+                <h3 style="margin:14px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;line-height:1;color:#0a0a0a">Songs that outlive the credits.</h3>
+                <p style="margin:18px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Music has always been an integral part of Marathi storytelling, and Everest Entertainment is proud to curate one of Maharashtra's most celebrated music catalogues. With a repertoire of over 800 songs spanning blockbuster film soundtracks, devotional music, independent releases, romantic melodies, and timeless classics, our collection continues to entertain and inspire audiences across generations.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Our catalogue features memorable music from celebrated films such as <em>Photocopy</em>, <em>Mumbai Pune Mumbai</em>, <em>Tukaram</em>, <em>Maharashtra Shaheer</em>, <em>Boyz</em>, and <em>Pinjra</em>, alongside an extensive collection of devotional and independent music. Featuring the work of acclaimed composers, lyricists, and artists including <strong>Ajay–Atul</strong>, <strong>Avadhoot Gupte</strong>, <strong>Shreya Ghoshal</strong>, <strong>Shankar Mahadevan</strong>, <strong>Shaan</strong>, <strong>Vaishali Samant</strong>, <strong>Bela Shende</strong>, and many others, our repertoire reflects the richness and diversity of Marathi music.</p>
+                <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:#424245">Whether it's a timeless film melody, a devotional favourite, or a contemporary classic, every song in the Everest collection reflects our enduring commitment to preserving, celebrating, and sharing the very best of Marathi music. Together, they form a living musical legacy — connecting generations through melodies that continue to inspire, entertain, and endure.</p>
+                <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 32px">
+                  <sc-for list="{{ musicRelease }}" as="m" hint-placeholder-count="4">
+                    <div style="border-top:1px solid #0a0a0a;padding-top:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#0A4DA6;letter-spacing:.08em">{{ m.n }}</span><div style="font-weight:600;font-size:14.5px;margin-top:6px">{{ m.t }}</div><div style="font-size:13.5px;color:#6e6e73;line-height:1.5;margin-top:4px">{{ m.d }}</div></div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Jukeboxes &amp; playlists — curated for every mood )</div>
+                  <p style="margin:10px 0 0;font-size:14px;color:#6e6e73">A dozen ready-to-play collections from the Everest catalogue — find them on the official YouTube channel, Everest Talkies.</p>
+                  <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ jukeboxes }}" as="j" hint-placeholder-count="12">
+                      <span style="border:1px solid #0a0a0a;padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">{{ j.t }}</span>
+                    </sc-for>
+                  </div>
+                  <a href="https://www.youtube.com/@EverestTalkies01" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Subscribe to Everest Talkies →</a>
+                </div>
+                <div style="margin-top:40px">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">( Independent &amp; originals — backing new voices )</div>
+                  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+                    <sc-for list="{{ musicIndie }}" as="i" hint-placeholder-count="2">
+                      <div style="border:1px solid #0a0a0a;padding:18px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">{{ i.k }}</div><div style="font-family:'Anton',sans-serif;font-size:20px;margin-top:8px">{{ i.t }}</div><div style="font-size:13px;color:#424245;line-height:1.55;margin-top:6px">{{ i.d }}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#6e6e73;margin-top:8px">{{ i.list }}</div></div>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;border-top:1px solid #0a0a0a;padding-top:24px">
+                  <sc-for list="{{ musicStats }}" as="s" hint-placeholder-count="4">
+                    <div><div style="font-family:'Anton',sans-serif;font-size:34px;line-height:1;color:#0a0a0a">{{ s.v }}</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:6px">{{ s.l }}</div></div>
+                  </sc-for>
+                </div>
+                <a href="Contact.dc.html" style="display:inline-block;margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Talk to music →</a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Jallosh" style="background:#0a0a0a;color:#fff;padding:110px 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid rgba(255,255,255,.35);display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#6FA8FF">( The Marathi entertainment ecosystem )</span><span style="color:rgba(255,255,255,.5)">/ 03</span></div>
+    <div style="display:flex;gap:64px;align-items:center;flex-wrap:wrap;justify-content:center;padding-top:52px">
+      <img src="https://everest-site-nu.vercel.app/assets/logos/jallosh-logo.png" alt="Jallosh Entertainment" style="flex:0 0 auto;width:min(260px,56vw);height:auto">
+      <div style="flex:1 1 420px;min-width:300px;max-width:620px">
+        <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,5.6vw,80px);line-height:.94;text-transform:uppercase;color:#fff">Jallosh Entertainment.</h2>
+        <p style="margin:24px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.72)">Everest's consumer-facing brand — the very best of Marathi films, Nataks, music and originals across FAST Channels, Smart TVs, Amazon Prime Video Channels and the upcoming JALLOSH app.</p>
+        <a href="Jallosh.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:32px;background:#fff;color:#0a0a0a;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;color:#fff;opacity:1">Explore Jallosh →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Slate" style="padding:100px 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Our films )</span><span style="color:#6e6e73">/ 04</span></div>
+    <div style="padding-top:46px;display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">From the Everest slate.</h2>
+      <a href="Films.dc.html" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">View full library →</a>
+    </div>
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <a href="Films.dc.html" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://everest-site-nu.vercel.app/assets/posters/picasso.jpg" alt="Picasso poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase"><span>Picasso</span><span style="color:#0A4DA6">2021</span></div><div style="font-size:12.5px;color:#6e6e73;margin-top:3px">67th NFA · special mention</div></a>
+      <a href="Films.dc.html" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://everest-site-nu.vercel.app/assets/posters/aamhi-doghi.jpg" alt="Aamhi Doghi poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase"><span>Aamhi Doghi</span><span style="color:#0A4DA6">2018</span></div><div style="font-size:12.5px;color:#6e6e73;margin-top:3px">Drama · Gauri Deshpande adaptation</div></a>
+      <a href="Films.dc.html" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://everest-site-nu.vercel.app/assets/posters/baap-janma.jpg" alt="Baapjanma poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase"><span>Baapjanma</span><span style="color:#0A4DA6">2017</span></div><div style="font-size:12.5px;color:#6e6e73;margin-top:3px">Drama · Marathi</div></a>
+      <a href="Films.dc.html" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://everest-site-nu.vercel.app/assets/posters/aajcha-divas-majha.jpg" alt="Aajcha Divas Majha poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase"><span>Aajcha Divas Majha</span><span style="color:#0A4DA6">2013</span></div><div style="font-size:12.5px;color:#6e6e73;margin-top:3px">National Award · Best Marathi Film</div></a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Watch" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Watch on YouTube )</span><span style="color:#6e6e73">/ 05</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">New launches &amp; the catalogue.</h2>
+      <p style="margin:22px auto 0;max-width:600px;font-size:17px;line-height:1.6;color:#424245">Recent uploads and hand-picked highlights from Everest's channels — songs, trailers, dramas and full films.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px">
+      <a href="https://www.youtube.com/watch?v=qP5OPfxCcKU" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/qP5OPfxCcKU/hqdefault.jpg" alt="New launch on YouTube" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">New launch</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Watch on YouTube →</div></a>
+      <a href="https://www.youtube.com/watch?v=FdLjn74JWzY" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/FdLjn74JWzY/hqdefault.jpg" alt="New launch on YouTube" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">New launch</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Watch on YouTube →</div></a>
+      <a href="https://www.youtube.com/watch?v=Hf4whljD2_0" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/Hf4whljD2_0/hqdefault.jpg" alt="Aamhi Doghi Final Take" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">New launch</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Aamhi Doghi — Final Take →</div></a>
+      <a href="https://www.youtube.com/watch?v=ht4RhEPH_tU" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/ht4RhEPH_tU/hqdefault.jpg" alt="Full film on YouTube" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Movies on demand</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Watch full film →</div></a>
+      <a href="https://www.youtube.com/watch?v=6Dxqa-uoQEI" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/6Dxqa-uoQEI/hqdefault.jpg" alt="Awaj Wadhav DJ — Poshter Girl" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Most popular · song</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Awaj Wadhav DJ — Poshter Girl →</div></a>
+      <a href="https://www.youtube.com/watch?v=8gM0heG2KLY" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/8gM0heG2KLY/hqdefault.jpg" alt="Jadoo Teri Nazar — Marathi natak" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Drama · natak</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Jadoo Teri Nazar →</div></a>
+      <a href="https://www.youtube.com/watch?v=-De2u84Efqw" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/-De2u84Efqw/hqdefault.jpg" alt="Best Romantic Marathi Love Songs" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Featured</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Best Romantic Marathi Love Songs →</div></a>
+      <a href="https://www.youtube.com/watch?v=fe6wB1UqAgQ" target="_blank" rel="noopener" style="color:#0a0a0a;display:block" style-hover="opacity:1"><img src="https://img.youtube.com/vi/fe6wB1UqAgQ/hqdefault.jpg" alt="Me Shivaji Raje Bhosle Boltoy Trailer" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .4s ease" style-hover="filter:grayscale(0)"><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Featured</div><div style="font-size:13.5px;font-weight:600;margin-top:3px">Me Shivaji Raje Bhosle Boltoy — Trailer →</div></a>
+    </div>
+    <div style="text-align:center;margin-top:44px"><a href="https://www.youtube.com/@EverestMarathi" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Explore the YouTube network — 13 channels, 2M+ subscribers →</a></div>
+  </div>
+</section>
+
+<section data-screen-label="Values" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Why Everest )</span><span style="color:#6e6e73">/ 06</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">Built to last the climb.</h2>
+      <p style="margin:22px auto 0;max-width:560px;font-size:17px;line-height:1.6;color:#424245">We commit to our values regardless of the challenges we face — that is how a slate becomes a legacy.</p>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">01</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Heritage</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">A decade-deep catalogue rooted in Maharashtra's stories and stars.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">02</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Reach</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">Theatre, satellite, OTT and music platforms — wherever audiences are.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">03</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Craft</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">Award-winning storytelling, made with discipline and heart.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">04</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Catalogue</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">260+ films ready to license, stream and rediscover.</p></div>
+    </div>
+    <div style="margin-top:90px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( What we stand for )</div>
+      <p style="margin:26px auto 0;max-width:900px;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(24px,3.4vw,44px);line-height:1.14;text-transform:uppercase;color:#0a0a0a">"At Everest, we are committed to living our values regardless of the challenges we face."</p>
+      <div style="margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6e6e73">— Everest Entertainment</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Contact CTA" style="padding:0 24px 120px">
+  <div style="max-width:1200px;margin:0 auto;border:1px solid #0a0a0a;padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px);text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( Let's talk )</div>
+    <h2 style="margin:20px auto 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:.96;text-transform:uppercase;color:#0a0a0a;text-wrap:balance">Have a story, a title, or a screen?</h2>
+    <p style="margin:24px auto 0;max-width:560px;font-size:17px;line-height:1.6;color:#424245">Producers, broadcasters, platforms and brands — start a conversation with the Everest team.</p>
+    <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#0a0a0a;color:#fff;padding:16px 30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Get in touch →</a>
+  </div>
+</section>
+
+<footer style="border-top:2px solid #0a0a0a;padding:24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:10px;vertical-align:2px">▲</span></a>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase"><a href="Films.dc.html" style="color:#6e6e73">Films</a><a href="About.dc.html" style="color:#6e6e73">About</a><a href="Jallosh.dc.html" style="color:#6e6e73">Jallosh</a><a href="Contact.dc.html" style="color:#6e6e73">Contact</a><a href="mailto:info@everestent.in" style="color:#6e6e73">info@everestent.in</a></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#a1a1a6">© 2026 EVEREST ENTERTAINMENT LLP · MUMBAI</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroAutoplay&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot;}, &quot;heroIntervalSec&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 5, &quot;min&quot;: 3, &quot;max&quot;: 10, &quot;step&quot;: 1, &quot;unit&quot;: &quot;s&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { idx: 0, who: false, od: null, menu: false };
+  componentDidMount() {
+    if (this.props.heroAutoplay ?? true) {
+      const s = (this.props.heroIntervalSec ?? 5) * 1000;
+      this._t = setInterval(() => this.setState(st => ({ idx: (st.idx + 1) % 7 })), s);
+    }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+  go(i) {
+    this.setState({ idx: i });
+    if (this._t) { clearInterval(this._t); if (this.props.heroAutoplay ?? true) { const s = (this.props.heroIntervalSec ?? 5) * 1000; this._t = setInterval(() => this.setState(st => ({ idx: (st.idx + 1) % 7 })), s); } }
+  }
+  renderVals() {
+    const B = 'https://everest-site-nu.vercel.app/assets/';
+    const H = [
+      { t: 'Mee Shivajiraje Bhosale Boltoy', y: '2009', f: 'hero-me-shivajiraje-wide.jpg' },
+      { t: 'Pawankhind', y: '2022', f: 'hero-pawankhind-wide.jpg' },
+      { t: 'Gulkand', y: '2025', f: 'hero-gulkand-wide.jpg' },
+      { t: 'Tukaram', y: '2012', f: 'hero-tukaram-wide.jpg' },
+      { t: 'Mumbai Pune Mumbai', y: '2010', f: 'hero-mumbai-pune-mumbai-wide.jpg' },
+      { t: 'Premachi Goshta', y: '2013', f: 'hero-premachi-goshta-wide.jpg' },
+      { t: 'Daagdi Chaawl', y: '2015', f: 'hero-daagdi-chaawl-wide.jpg' }
+    ];
+    const { idx, who, od } = this.state;
+    const tg = k => () => this.setState(s => ({ od: s.od === k ? null : k }));
+    return {
+      heroSlides: H.map((h, i) => ({ src: B + 'heros/' + h.f, alt: h.t + ' poster', t: h.t, y: h.y, o: i === idx ? 1 : 0.45, sc: i === idx ? 'scale(1)' : 'scale(.97)' })),
+      trackX: 'translateX(calc(' + (-idx) + ' * (min(80vw, 1200px) + 22px)))',
+      heroDots: H.map((h, i) => ({ bg: i === idx ? '#0A4DA6' : '#d2d2d7', onClick: () => this.go(i) })),
+      prevSlide: () => this.go((this.state.idx + 6) % 7),
+      nextSlide: () => this.go((this.state.idx + 1) % 7),
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      whoOpen: who, whoLabel: who ? 'Close −' : 'Read the full story +',
+      toggleWho: () => this.setState(s => ({ who: !s.who })),
+      prodOpen: od === 0, syndOpen: od === 1, digOpen: od === 2, musicOpen: od === 3,
+      prodSign: od === 0 ? '−' : '+', syndSign: od === 1 ? '−' : '+', digSign: od === 2 ? '−' : '+', musicSign: od === 3 ? '−' : '+',
+      toggleProd: tg(0), toggleSynd: tg(1), toggleDig: tg(2), toggleMusic: tg(3),
+      prodCraft: [
+        { n: '01', t: 'Development & Screenplay', d: 'Story, script and packaging — building projects worth backing.' },
+        { n: '02', t: 'Feature Films', d: 'Full-length Marathi & Hindi features, financed and produced in-house.' },
+        { n: '03', t: 'Comedy & Drama', d: 'From laugh-out-loud nataks to heartfelt drama and family entertainers.' },
+        { n: '04', t: 'Post & Finishing', d: 'Edit, sound, colour and delivery — polished to a theatrical standard.' }
+      ],
+      directors: [
+        { n: '01', name: 'Santosh Manjrekar', f: 'Mee Shivajiraje Bhosale Boltoy · 2009' },
+        { n: '02', name: 'Abhijeet Satam', f: 'Haapus · 2010' },
+        { n: '03', name: 'Sameer Vidwans', f: 'Time Please · 2013' },
+        { n: '04', name: 'Prakash Kunte', f: 'Coffee Ani Barach Kahi · 2015' },
+        { n: '05', name: 'Hemant Dhome', f: 'Baghtos Kaay Mujara Kar · 2017' },
+        { n: '06', name: 'Nipun Dharmadhikari', f: 'Baapjanma · 2017' },
+        { n: '07', name: 'Pratima Joshi', f: 'Amhi Doghi · 2018' },
+        { n: '08', name: 'Girish Joshi', f: 'TCGN · 2018' },
+        { n: '09', name: 'Saleel Kulkarni', f: 'Weddingcha Shinema · 2019' },
+        { n: '10', name: 'Pratap Phad — forthcoming', f: 'Ananya · the tenth debut' }
+      ],
+      comingSoon: [
+        { t: 'Ananya', d: 'Featuring Hruta Durgule. Directed by Pratap Phad — the tenth first-time director Everest has backed.' },
+        { t: 'Boyz 3', d: 'The fun continues. The next chapter in the much-loved Boyz franchise.' },
+        { t: 'MPM 4', d: 'The Mumbai Pune Mumbai story rolls on — a fourth instalment in the most-loved Marathi rom-com franchise.' }
+      ],
+      prodStats: [{ v: '23+', l: 'Films produced' }, { v: '3', l: 'National Awards' }, { v: '15', l: 'State Awards' }, { v: '9', l: 'First-time directors backed' }],
+      syndWindows: [
+        { n: '01', t: 'Satellite & TV', d: 'Premieres and library packages for satellite and cable broadcasters.' },
+        { n: '02', t: 'Catalogue Access', d: 'Curated bundles by genre, era or star — built around your audience.' },
+        { n: '03', t: 'Theatrical & Re-release', d: 'Bringing classics back to the big screen for new generations.' },
+        { n: '04', t: 'Special Programming', d: 'Festivals, retrospectives and themed events with full materials support.' }
+      ],
+      syndCats: [
+        { k: 'Blockbusters', t: '7 marquee titles', list: 'Zenda · Deool · Daagdi Chaal · Farzand · Bal Gandharva · Baban · Hirkani' },
+        { k: 'Super Hits', t: '10 crowd favourites', list: 'Astitva · Kaydyacha Bola · Maza Pati Karodpati · Hamaal De Dhamaal · Tu Tithe Me · Navri Mili Navryala · Jau Tithe Khau · Lalbaug Parel · Premachi Goshta · Mangalashtak Once More' },
+        { k: 'Award Winners', t: '13 National & State', list: 'Astitva · Gabricha Paus · Dahavi Fa · Devrai · Bhet · Ghara Baher · Uttarayan · Devki · Kalat Nakalat · Sawat Mazi Laadki · Chaukhat Raja · Bioscope · Picasso' },
+        { k: 'Classic Dramas', t: '4 stage legends', list: 'Sakharam Binder · Shantata! Court Chalu Aahe · Soor Rahu De · Pratikar' },
+        { k: 'Popular Dramas', t: '4 evergreen serials', list: 'Jadoo Teri Nazar · Char Diwas Premache · Rashichakra · Jawai Maza Bhala' },
+        { k: 'Browse by Decade', t: '60s → 2010s', list: 'Six decades of Marathi cinema, browsable by era. 1960s · 1970s · 1980s · 1990s · 2000s · 2010s.' }
+      ],
+      syndPartners: [
+        { k: 'Broadcast · Television', list: 'STAR Pravah · SONY Marathi · ZEE Talkies · COLORS Marathi' },
+        { k: 'OTT · Streaming', list: 'Prime Video · JioStar' },
+        { k: 'Music · Audio platforms', list: 'YouTube · Spotify · JioSaavn · Amazon Music' }
+      ],
+      syndStats: [{ v: '260+', l: 'Film titles' }, { v: '40+', l: 'Drama series' }, { v: '#1', l: 'Marathi GEC aggregator' }, { v: '∞', l: 'Windows & re-runs' }],
+      digRun: [
+        { n: '01', t: 'OTT Licensing', d: "Films and library packages placed with India's leading streaming services." },
+        { n: '02', t: 'YouTube Network', d: 'Owned channels for films, songs and clips — millions of monthly views.' },
+        { n: '03', t: 'Digital Premieres', d: 'Direct-to-digital releases timed to reach audiences first online.' },
+        { n: '04', t: 'Catalogue Streaming', d: 'The full Everest library, encoded, subtitled and discovery-ready.' }
+      ],
+      digHomes: [
+        { k: 'Owned channel', t: 'YouTube — Everest Marathi', d: '2M+ subscribers. Music repertoire, short content and a deep film catalogue.', list: 'YZ · Daagdi Chaawl · Mumbai Pune Mumbai 2 · Rajwade & Sons · Sandook · Coffee Ani Barach Kahi · Ishq Wala Love · Happy Journey · Popat · Time Please · Premachi Goshta · Morya' },
+        { k: 'First-mover OTT', t: 'Amazon Prime Video', d: 'Among the first independent studios with an Amazon output deal.', list: 'Baghtos Kay Mujara Kar · Baapjanma · Mumbai Pune Mumbai 2 · Daagdi Chaawl · Coffee Ani Barach Kahi · Happy Journey · Aajcha Divas Majha · Time Please · Premachi Goshta · Popat · Prem Mhanje Prem Mhanje Prem Asta · Tukaram' },
+        { k: 'Streaming partner', t: 'Netflix', d: "A curated selection of the catalogue's best, with subtitles for a global audience.", list: 'YZ · Mumbai Pune Mumbai 2 · Sandook · Coffee Ani Barach Kahi · Happy Journey · Deool · Kshanbhar Vishranti · Shikshanachya Aaicha Gho · Mumbai Pune Mumbai · Valu' }
+      ],
+      channels: [
+        { tag: 'Flagship', name: 'Everest Marathi', d: 'Films, music & short content — the home of Everest on YouTube. 2M+ subscribers.', href: 'https://www.youtube.com/@EverestMarathi' },
+        { tag: 'Cinema', name: 'Everest Hindi Cinema', d: 'Library Hindi titles for free streaming.', href: 'https://www.youtube.com/@EverestHindiCinema' },
+        { tag: 'Devotional', name: 'Everest Bhakti', d: 'Bhajans, abhangas and devotional jukeboxes.', href: 'https://www.youtube.com/@EverestBhakti' },
+        { tag: 'Hasya', name: 'Everest Hasya Marathi', d: 'Marathi comedy — sketches, films and stand-up.', href: 'https://www.youtube.com/@everesthasyamarathi' },
+        { tag: 'Main channel', name: 'Everest Talkies', d: 'Official catalogue and jukebox collections.', href: 'https://www.youtube.com/@EverestTalkies01' },
+        { tag: 'Talkies', name: 'Everest Marathi Talkies', d: 'Full-length Marathi features streaming free.', href: 'https://www.youtube.com/channel/UCE7KckO2uNgj8FDGj1lv3aw' },
+        { tag: 'Comedy', name: 'Everest Comedy Jatra', d: 'Stand-up and skit collections from the Comedy Jatra label.', href: 'https://www.youtube.com/@EverestComedyJatra' },
+        { tag: 'MHJ', name: 'Everest MHJ Comedy', d: 'Marathi humour clips, sketches and shorts.', href: 'https://www.youtube.com/@MHJComedyNew' },
+        { tag: 'Dada Kondke', name: 'Everest Dada Kondke Jubilee Star', d: 'The legendary Dada Kondke catalogue, in one place.', href: 'https://www.youtube.com/channel/UCYVV6TQEb1vQQcdAhJyj0RQ' },
+        { tag: 'Hits', name: 'Everest Marathi Hits', d: "A non-stop music feed of the catalogue's biggest songs.", href: 'https://www.youtube.com/@EverestMarathiHits' },
+        { tag: 'Superhit', name: 'Everest Superhit Marathi', d: 'A curated stream of Marathi superhits.', href: 'https://www.youtube.com/channel/UC3yBS7vLGucTqg05CBN3nuA' },
+        { tag: 'Gujarati', name: 'Everest Iraada Gujarati', d: "Everest's home for Gujarati entertainment.", href: 'https://www.youtube.com/@everestgujarati' },
+        { tag: 'Bhojpuri', name: 'Everest Bhojpuri', d: 'Everest entertainment for Bhojpuri audiences.', href: 'https://www.youtube.com/@everestbhojpuri' }
+      ],
+      fastChannels: [
+        { t: 'Everest Marathi', d: 'General entertainment Marathi films and shows.' },
+        { t: 'Everest Comedy', d: 'Marathi comedy — films, sketches and stand-up.' },
+        { t: 'Everest Hits', d: 'Non-stop chart-topping Marathi songs.' },
+        { t: 'Everest Bhakti', d: 'Devotional content — bhajans, abhangas, festival programming.' },
+        { t: 'Everest Talkies', d: 'Library Marathi feature films, round the clock.' },
+        { t: 'Everest Hindi Cinema', d: 'Curated Hindi cinema from the library.' },
+        { t: 'Everest Dada Kondke', d: 'A dedicated channel for the Dada Kondke catalogue.' },
+        { t: 'Everest Comedy Jatra', d: 'Stand-up, sketch and stage comedy.' }
+      ],
+      digStats: [{ v: '2M+', l: 'YouTube subscribers' }, { v: '4+', l: 'OTT platforms' }, { v: '260+', l: 'Titles online' }, { v: '24/7', l: 'Always on' }],
+      musicRelease: [
+        { n: '01', t: 'Film Soundtracks', d: 'Original scores and songs from the Everest production slate.' },
+        { n: '02', t: 'Devotional · भक्ती', d: 'A rich devotional catalogue for festivals and everyday listening.' },
+        { n: '03', t: 'Digital Distribution', d: 'Delivered to every major streaming and short-video platform.' },
+        { n: '04', t: 'Sync & Licensing', d: 'Our catalogue, cleared for film, TV, ads and creators.' }
+      ],
+      jukeboxes: ['Marathi Tadka', 'Festival Hits', 'Rock The Dance Floor', 'Popular Hits', 'Rang Premache · I', 'Rang Premache · II', 'Tukaram Songs', 'Priyatama Songs', 'Best of Bela Shende', 'Best of Bharat Jadhav', 'Happy Journey Audio', 'Best Romantic Songs'].map(t => ({ t })),
+      musicIndie: [
+        { k: 'Pune-based rapper', t: 'KING JD', d: 'Two stupendous hits with King JD that paved the way for many more independent launches.', list: 'Pune Rap · Veer Marathe' },
+        { k: 'Singer', t: 'VAIBHAV LONDHE', d: 'A breakout devotional single that connected with audiences across the state.', list: 'Khanderaya' }
+      ],
+      musicStats: [{ v: '800+', l: 'Songs in catalogue' }, { v: '6', l: 'DSP partners' }, { v: '4', l: 'Music TV channels' }, { v: '∞', l: 'Repeat plays' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

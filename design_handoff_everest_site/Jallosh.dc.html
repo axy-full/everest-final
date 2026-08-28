@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0A4DA6;text-decoration:none}
+a:hover{opacity:.75}
+::selection{background:#0A4DA6;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%222%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22200%22%20height=%22200%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px"></div>
+
+<nav style="position:absolute;top:0;left:0;right:0;z-index:80">
+  <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#fff">EVEREST <span style="color:#6FA8FF;font-size:11px;vertical-align:2px">▲</span></a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:12px 10px">
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+    </button>
+  </div>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:fadeIn .25s ease both;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+      <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="background:none;border:none;cursor:pointer;font-size:30px;font-weight:300;color:#0a0a0a;line-height:1;padding:6px 12px">×</button>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:7vh clamp(20px,3.5vw,40px) 40px;display:flex;flex-direction:column;align-items:flex-start">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/01</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Home</span></a>
+      <a href="Films.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/02</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Films</span></a>
+      <a href="About.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/03</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">About</span></a>
+      <a href="Jallosh.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0A4DA6"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/04</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Jallosh</span></a>
+      <a href="Contact.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0 16px;border-bottom:1px solid #0a0a0a;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/05</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Contact</span></a>
+      <a href="mailto:info@everestent.in" style="margin-top:5vh;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:#6e6e73">INFO@EVERESTENT.IN</a>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="Jallosh hero" style="background:#0a0a0a;color:#fff;padding:150px 24px 90px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid rgba(255,255,255,.35);display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#6FA8FF">( The Marathi Entertainment Ecosystem )</span><span style="color:rgba(255,255,255,.5)">Home / Jallosh</span></div>
+    <div style="text-align:center;padding-top:48px">
+      <img src="https://everest-site-nu.vercel.app/assets/logos/jallosh-logo.png" alt="Jallosh Entertainment logo" style="width:min(230px,54vw);height:auto">
+      <h1 style="margin:36px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(46px,7.2vw,116px);line-height:.92;text-transform:uppercase;color:#fff;text-wrap:balance">Jallosh Entertainment.</h1>
+      <p style="margin:28px auto 0;max-width:640px;font-size:16.5px;line-height:1.65;color:rgba(255,255,255,.75)">Everest Entertainment's consumer-facing brand — bringing together the very best of Marathi entertainment across FAST Channels, Smart TVs, Amazon Prime Video Channels, and our upcoming app.</p>
+    </div>
+  </div>
+</header>
+
+<div data-screen-label="Marquee" style="background:#0a0a0a;overflow:hidden;padding:14px 0;border-top:1px solid rgba(255,255,255,.25)">
+  <div style="display:flex;width:max-content;animation:marq 30s linear infinite">
+    <span style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Jallosh <span style="color:#6FA8FF">▲</span> FAST Channels <span style="color:#6FA8FF">▲</span> Smart TVs <span style="color:#6FA8FF">▲</span> Prime Video Channels <span style="color:#6FA8FF">▲</span> The App <span style="color:#6FA8FF">▲</span> Jallosh <span style="color:#6FA8FF">▲</span> FAST Channels <span style="color:#6FA8FF">▲</span> Smart TVs <span style="color:#6FA8FF">▲</span> Prime Video Channels <span style="color:#6FA8FF">▲</span> The App <span style="color:#6FA8FF">▲</span> </span>
+    <span aria-hidden="true" style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Jallosh <span style="color:#6FA8FF">▲</span> FAST Channels <span style="color:#6FA8FF">▲</span> Smart TVs <span style="color:#6FA8FF">▲</span> Prime Video Channels <span style="color:#6FA8FF">▲</span> The App <span style="color:#6FA8FF">▲</span> Jallosh <span style="color:#6FA8FF">▲</span> FAST Channels <span style="color:#6FA8FF">▲</span> Smart TVs <span style="color:#6FA8FF">▲</span> Prime Video Channels <span style="color:#6FA8FF">▲</span> The App <span style="color:#6FA8FF">▲</span> </span>
+  </div>
+</div>
+
+<section data-screen-label="Same summit" style="padding:100px 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( The home of Marathi entertainment )</span><span style="color:#6e6e73">/ 01</span></div>
+    <div style="max-width:900px;margin:0 auto;text-align:center;padding-top:46px;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">Same summit, new trail.</h2>
+      <p style="margin:30px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">From timeless classics and blockbuster films to iconic Nataks, music, original series, devotional content, and exclusive programming, JALLOSH is designed to be the home of Marathi entertainment for audiences around the world.</p>
+      <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">Built on Everest's rich legacy and one of India's largest collections of Marathi content, JALLOSH seamlessly blends the stories audiences have cherished for generations with the convenience of modern entertainment. Whether you're revisiting a beloved classic, enjoying the latest blockbuster, or discovering something new, every experience is thoughtfully curated to celebrate the joy of being Marathi.</p>
+      <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#0a0a0a;color:#fff;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Work with Jallosh →</a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Statement" style="padding:0 24px 100px">
+  <div style="max-width:1200px;margin:0 auto;border:1px solid #0a0a0a;padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px);text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+    <p style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,4vw,54px);line-height:1.08;text-transform:uppercase;color:#0a0a0a;text-wrap:balance">More than a streaming platform — <span style="color:#0A4DA6">Jallosh</span> is the Marathi entertainment ecosystem: films, theatre, music and original programming in one destination.</p>
+    <p style="margin:26px auto 0;max-width:560px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;letter-spacing:.04em;text-transform:uppercase;color:#6e6e73">Wherever you are. Whatever screen you're watching on. JALLOSH brings the joy of Marathi entertainment home.</p>
+  </div>
+</section>
+
+<section data-screen-label="Platforms" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Coming soon )</span><span style="color:#6e6e73">/ 02</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">On every screen.</h2>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px;text-align:left"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">01</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px;line-height:1.1">FAST Channels</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">24/7 linear channels on free ad-supported streaming TV.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Launching soon</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px;text-align:left"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">02</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px;line-height:1.1">Smart TVs</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">On leading Smart TV platforms and connected devices.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Launching soon</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px;text-align:left"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">03</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px;line-height:1.1">Amazon Prime Video Channels</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">The JALLOSH channel on Prime Video Channels.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Launching soon</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px;text-align:left"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">04</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px;line-height:1.1">The JALLOSH App</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">The home of Marathi entertainment, in your pocket.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Launching soon</div></div>
+    </div>
+    <div style="margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+      <span style="border:1px solid #0a0a0a;padding:12px 22px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Download the App — coming soon</span>
+      <span style="border:1px solid #0a0a0a;padding:12px 22px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Watch on your Smart TV — coming soon</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Find Jallosh" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Find Jallosh )</span><span style="color:#6e6e73">/ 03</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">On every platform.</h2>
+      <p style="margin:22px auto 0;max-width:520px;font-size:15px;line-height:1.6;color:#6e6e73">Handles go live as the Jallosh team confirms them — placeholders below.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px">
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">LinkedIn</div><div style="font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;margin-top:12px">Jallosh Entertainment</div><div style="font-size:13px;color:#6e6e73;margin-top:6px">Handle TBC — placeholder</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6">Company page · link to be confirmed</div></div>
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Instagram</div><div style="font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;margin-top:12px">@jalloshent</div><div style="font-size:13px;color:#6e6e73;margin-top:6px">Handle TBC — placeholder</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6">Insta · link to be confirmed</div></div>
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">YouTube</div><div style="font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;margin-top:12px">@JalloshEntertainment</div><div style="font-size:13px;color:#6e6e73;margin-top:6px">Handle TBC — placeholder</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6">Channel · link to be confirmed</div></div>
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Website</div><div style="font-family:'Anton',sans-serif;font-size:20px;text-transform:uppercase;margin-top:12px">jalloshent.in</div><div style="font-size:13px;color:#6e6e73;margin-top:6px">Handle TBC — placeholder</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#a1a1a6">Web · link to be confirmed</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Jallosh CTA" style="padding:0 24px 120px">
+  <div style="max-width:1200px;margin:0 auto;border:1px solid #0a0a0a;padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px);text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( Jallosh × Everest )</div>
+    <h2 style="margin:20px auto 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:.96;text-transform:uppercase;color:#0a0a0a;text-wrap:balance">Have a story for Jallosh?</h2>
+    <p style="margin:24px auto 0;max-width:520px;font-size:17px;line-height:1.6;color:#424245">Pitches, partnerships and press — the door is open.</p>
+    <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#0a0a0a;color:#fff;padding:16px 30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Get in touch →</a>
+  </div>
+</section>
+
+<footer style="border-top:2px solid #0a0a0a;padding:24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:10px;vertical-align:2px">▲</span></a>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase"><a href="Films.dc.html" style="color:#6e6e73">Films</a><a href="About.dc.html" style="color:#6e6e73">About</a><a href="Jallosh.dc.html" style="color:#6e6e73">Jallosh</a><a href="Contact.dc.html" style="color:#6e6e73">Contact</a><a href="mailto:info@everestent.in" style="color:#6e6e73">info@everestent.in</a></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#a1a1a6">© 2026 EVEREST ENTERTAINMENT LLP · MUMBAI</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menu: false };
+  renderVals() {
+    return { menuOpen: this.state.menu, toggleMenu: () => this.setState(s => ({ menu: !s.menu })) };
+  }
+}
+</script>
+</body>
+</html>

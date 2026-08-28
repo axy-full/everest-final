@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0A4DA6;text-decoration:none}
+a:hover{opacity:.75}
+::selection{background:#0A4DA6;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%222%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22200%22%20height=%22200%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px"></div>
+
+<nav style="position:absolute;top:0;left:0;right:0;z-index:80">
+  <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#fff">EVEREST <span style="color:#6FA8FF;font-size:11px;vertical-align:2px">▲</span></a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:12px 10px">
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+    </button>
+  </div>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:fadeIn .25s ease both;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+      <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="background:none;border:none;cursor:pointer;font-size:30px;font-weight:300;color:#0a0a0a;line-height:1;padding:6px 12px">×</button>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:7vh clamp(20px,3.5vw,40px) 40px;display:flex;flex-direction:column;align-items:flex-start">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/01</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Home</span></a>
+      <a href="Films.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/02</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Films</span></a>
+      <a href="About.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0A4DA6"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/03</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">About</span></a>
+      <a href="Jallosh.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/04</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Jallosh</span></a>
+      <a href="Contact.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0 16px;border-bottom:1px solid #0a0a0a;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/05</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Contact</span></a>
+      <a href="mailto:info@everestent.in" style="margin-top:5vh;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:#6e6e73">INFO@EVERESTENT.IN</a>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="About hero" style="position:relative;height:64vh;min-height:460px;overflow:hidden;background:#0a0a0a">
+  <img src="https://everest-site-nu.vercel.app/assets/about-header.jpg" alt="Everest Entertainment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.38) 40%,rgba(0,0,0,.72) 100%)"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(20px,3.5vw,40px) 48px">
+    <div style="max-width:1200px;margin:0 auto;width:100%">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6FA8FF">( About Everest ) — Home / About</div>
+      <h1 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(42px,7vw,110px);line-height:.92;color:#fff;text-transform:uppercase;max-width:1000px;text-wrap:balance">A home for Marathi storytelling.</h1>
+      <p style="margin:20px 0 0;max-width:620px;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.85)">For over 25 years we've produced, distributed, streamed and scored the stories of Maharashtra — and carried them far beyond it.</p>
+    </div>
+  </div>
+</header>
+
+<div data-screen-label="Marquee" style="background:#0a0a0a;overflow:hidden;padding:14px 0;border-top:1px solid rgba(255,255,255,.25)">
+  <div style="display:flex;width:max-content;animation:marq 32s linear infinite">
+    <span style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Since 2000 <span style="color:#6FA8FF">▲</span> Mumbai <span style="color:#6FA8FF">▲</span> 25 years, one climb <span style="color:#6FA8FF">▲</span> The joy of Maharashtra <span style="color:#6FA8FF">▲</span> Since 2000 <span style="color:#6FA8FF">▲</span> Mumbai <span style="color:#6FA8FF">▲</span> 25 years, one climb <span style="color:#6FA8FF">▲</span> The joy of Maharashtra <span style="color:#6FA8FF">▲</span> </span>
+    <span aria-hidden="true" style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">Since 2000 <span style="color:#6FA8FF">▲</span> Mumbai <span style="color:#6FA8FF">▲</span> 25 years, one climb <span style="color:#6FA8FF">▲</span> The joy of Maharashtra <span style="color:#6FA8FF">▲</span> Since 2000 <span style="color:#6FA8FF">▲</span> Mumbai <span style="color:#6FA8FF">▲</span> 25 years, one climb <span style="color:#6FA8FF">▲</span> The joy of Maharashtra <span style="color:#6FA8FF">▲</span> </span>
+  </div>
+</div>
+
+<section data-screen-label="Journey" style="padding:100px 24px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Our journey )</span><span style="color:#6e6e73">/ 01</span></div>
+    <div style="max-width:900px;margin:0 auto;text-align:center;padding-top:46px;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">25 years, one climb.</h2>
+      <p style="margin:30px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">Founded in 2000, Everest Entertainment began with a vision to celebrate, preserve, and take Marathi stories to audiences everywhere. What started as a film distribution business has grown into one of Maharashtra's leading media and entertainment companies, spanning film production, distribution, television, music, digital content, and content aggregation.</p>
+      <sc-if value="{{ journeyOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:fadeIn .5s ease both">
+          <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">Over the past 25 years, Everest has built one of India's largest repositories of Marathi entertainment, with a library of over <strong>260 films</strong>, <strong>50 iconic dramas (Nataks)</strong>, and <strong>800+ songs</strong>. Along the way, we have produced and partnered on award-winning films, collaborated with the industry's finest talent, and become the largest aggregator of Marathi content across television, digital, and OTT platforms.</p>
+          <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">As audiences and technology continue to evolve, so do we. Today, Everest's stories reach millions across theatres, television, YouTube, streaming platforms, and digital channels. The next chapter of our journey is <strong>JALLOSH</strong> — our consumer-facing brand that will bring together the Marathi entertainment ecosystem across FAST Channels, Amazon Prime Video Channels, OTT, and beyond, making the very best of Marathi entertainment accessible to audiences around the world.</p>
+          <p style="margin:20px auto 0;max-width:680px;font-size:17px;line-height:1.6;color:#424245">For us, this isn't just the business of entertainment, it's a lifelong commitment to preserving, celebrating, and sharing the stories, music, and the <strong>Joy of Maharashtra</strong> with the world!</p>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{ toggleJourney }}" style="background:none;border:none;padding:0;cursor:pointer;color:#0A4DA6;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:28px">{{ journeyLabel }}</button>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Founder" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Founder's note )</span><span style="color:#6e6e73">/ 02</span></div>
+    <div style="display:flex;gap:72px;align-items:flex-start;flex-wrap:wrap;justify-content:center;padding-top:52px">
+      <div style="flex:0 0 auto">
+        <img src="https://everest-site-nu.vercel.app/assets/founder.jpg" alt="Sanjay Chhabria, Founder of Everest Entertainment" style="width:min(360px,86vw);aspect-ratio:4/5;object-fit:cover;background:#f2f2f3;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1)">
+        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:8px"><span>Fig. 01</span><span>Founder</span></div>
+      </div>
+      <div style="flex:1 1 460px;min-width:300px;max-width:620px">
+        <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(34px,4.6vw,64px);line-height:.94;color:#0a0a0a;text-transform:uppercase">Sanjay Chhabria.</h2>
+        <p style="margin:26px 0 0;font-size:16px;line-height:1.7;color:#424245">Cinema has been a part of my life for as long as I can remember. Growing up in a family deeply rooted in the film business, I had the privilege of witnessing not just the magic on screen, but the passion, perseverance, and belief it takes to bring every story to life. Those early experiences shaped my love for cinema and, eventually, inspired the journey that became Everest Entertainment.</p>
+        <sc-if value="{{ founderOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:fadeIn .5s ease both">
+            <p style="margin:16px 0 0;font-size:16px;line-height:1.7;color:#424245">When I founded Everest, my vision was simple, to build a home for Marathi storytelling. Over the years, that journey has evolved from film distribution into one of Maharashtra's leading media and entertainment companies, spanning film production, television, music, digital platforms, and one of India's largest libraries of Marathi content. Through every chapter, one belief has remained constant: great stories deserve to be discovered, preserved, and shared across generations.</p>
+            <p style="margin:16px 0 0;font-size:16px;line-height:1.7;color:#424245">The way people experience entertainment will continue to evolve from theatres to television, from streaming to connected devices, but the power of a meaningful story never changes. Our responsibility is to ensure these stories continue to find new audiences, wherever they are and however they choose to watch.</p>
+            <p style="margin:16px 0 0;font-size:16px;line-height:1.7;color:#424245">As we begin the next chapter with <strong>JALLOSH</strong>, our ambition is to create the Marathi entertainment ecosystem of the future, bringing together timeless classics, original films and series, theatre, music, and emerging formats to delight audiences around the world.</p>
+            <p style="margin:16px 0 0;font-size:16px;line-height:1.7;color:#424245">For me, Everest has never been just about building a media company. It has always been about creating a lasting home for Marathi stories and sharing the Joy of Marathi entertainment with audiences across generations and across the world.</p>
+          </div>
+        </sc-if>
+        <button type="button" onClick="{{ toggleFounder }}" style="background:none;border:none;padding:0;cursor:pointer;color:#0A4DA6;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:24px">{{ founderLabel }}</button>
+        <div style="margin-top:32px;border-top:1px solid #0a0a0a;padding-top:18px">
+          <div style="font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.04em;text-transform:uppercase">Sanjay Chhabria</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-top:4px">Founder, Everest Entertainment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="What we do" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( One company, four climbs )</span><span style="color:#6e6e73">/ 03</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">What we do.</h2>
+      <p style="margin:22px auto 0;max-width:520px;font-size:17px;line-height:1.6;color:#424245">Everything a story needs to be made, seen and heard.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
+      <a href="Home.dc.html" style="display:block;border-left:1px solid #0a0a0a;padding:28px 22px 34px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">01</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px">Production</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px">Original films, made in-house.</div></a>
+      <a href="Home.dc.html" style="display:block;border-left:1px solid #0a0a0a;padding:28px 22px 34px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">02</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px">Syndication</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px">A 260+ film library.</div></a>
+      <a href="Home.dc.html" style="display:block;border-left:1px solid #0a0a0a;padding:28px 22px 34px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">03</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px">Digital</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px">Streaming, OTT &amp; YouTube.</div></a>
+      <a href="Home.dc.html" style="display:block;border-left:1px solid #0a0a0a;padding:28px 22px 34px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">04</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:16px">Music</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px">Soundtracks &amp; devotional.</div></a>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
+      <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:.95;color:#0a0a0a">2000</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Founded</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:.95;color:#0A4DA6">260+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Films in the collection</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:.95;color:#0a0a0a">50</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Iconic Nataks</div></div>
+      <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(48px,5.5vw,80px);line-height:.95;color:#0a0a0a">800+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Songs</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Values" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( What we stand for )</span><span style="color:#6e6e73">/ 04</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">Our values.</h2>
+      <p style="margin:22px auto 0;max-width:520px;font-size:17px;line-height:1.6;color:#424245">The principles that guide every project, in fair weather and foul.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a">
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">01</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Story First</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">Everything begins with a story worth telling — and worth telling well.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">02</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Rooted &amp; Reaching</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">Proudly regional, built to travel — local culture for a global audience.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">03</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Integrity</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">We live our values regardless of the challenges we face.</p></div>
+      <div style="border-left:1px solid #0a0a0a;padding:28px 22px 34px"><div style="font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:#0A4DA6">04</div><h3 style="margin:16px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase">Built to Last</h3><p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#6e6e73">We make work that earns a second life — and a third.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Media room" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Media Room )</span><span style="color:#6e6e73">/ 05</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">News &amp; press.</h2>
+      <p style="margin:22px auto 0;max-width:620px;font-size:17px;line-height:1.6;color:#424245">Press releases, announcements, and media coverage from Everest Entertainment — Maharashtra's home for Marathi cinema, television, and music.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px">
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Media Room</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:12px">Press Releases</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">Official announcements from Everest and JALLOSH.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Coming soon</div></div>
+      <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Media Room</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:12px">In the News</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">External coverage and features on Everest.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Coming soon</div></div>
+      <a href="mailto:info@everestent.in?subject=Brand%20assets%20request" style="display:block;border:1px solid #0a0a0a;padding:26px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Media Room</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:12px">Brand Assets</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">Logo, founder photo, company boilerplate — for press use.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Request · Email us →</div></a>
+      <a href="mailto:info@everestent.in?subject=Media%20enquiry" style="display:block;border:1px solid #0a0a0a;padding:26px;color:#0a0a0a" style-hover="background:#f5f5f7;opacity:1"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Media Room</div><div style="font-family:'Anton',sans-serif;font-size:22px;text-transform:uppercase;margin-top:12px">Media Contact</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.55">Interviews, quotes and press enquiries.</div><div style="margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#0A4DA6">Press · Get in touch →</div></a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Join CTA" style="padding:0 24px 120px">
+  <div style="max-width:1200px;margin:0 auto;border:1px solid #0a0a0a;padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px);text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( Work with us )</div>
+    <h2 style="margin:20px auto 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:.96;text-transform:uppercase;color:#0a0a0a">Join the climb.</h2>
+    <p style="margin:24px auto 0;max-width:560px;font-size:17px;line-height:1.6;color:#424245">Whether you have a story, a screen or a partnership in mind — we'd love to hear from you.</p>
+    <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#0a0a0a;color:#fff;padding:16px 30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Get in touch →</a>
+  </div>
+</section>
+
+<footer style="border-top:2px solid #0a0a0a;padding:24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:10px;vertical-align:2px">▲</span></a>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase"><a href="Films.dc.html" style="color:#6e6e73">Films</a><a href="About.dc.html" style="color:#6e6e73">About</a><a href="Jallosh.dc.html" style="color:#6e6e73">Jallosh</a><a href="Contact.dc.html" style="color:#6e6e73">Contact</a><a href="mailto:info@everestent.in" style="color:#6e6e73">info@everestent.in</a></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#a1a1a6">© 2026 EVEREST ENTERTAINMENT LLP · MUMBAI</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { journey: false, founder: false, menu: false };
+  renderVals() {
+    return {
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      journeyOpen: this.state.journey,
+      journeyLabel: this.state.journey ? 'Close −' : 'Read the full journey +',
+      toggleJourney: () => this.setState(s => ({ journey: !s.journey })),
+      founderOpen: this.state.founder,
+      founderLabel: this.state.founder ? 'Close −' : "Read the full founder's note +",
+      toggleFounder: () => this.setState(s => ({ founder: !s.founder }))
+    };
+  }
+}
+</script>
+</body>
+</html>

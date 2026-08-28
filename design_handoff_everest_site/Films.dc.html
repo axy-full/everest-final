@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0A4DA6;text-decoration:none}
+a:hover{opacity:.75}
+::selection{background:#0A4DA6;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%222%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22200%22%20height=%22200%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px"></div>
+
+<nav style="position:absolute;top:0;left:0;right:0;z-index:80">
+  <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:12px 10px">
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+    </button>
+  </div>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:fadeIn .25s ease both;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+      <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="background:none;border:none;cursor:pointer;font-size:30px;font-weight:300;color:#0a0a0a;line-height:1;padding:6px 12px">×</button>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:7vh clamp(20px,3.5vw,40px) 40px;display:flex;flex-direction:column;align-items:flex-start">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/01</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Home</span></a>
+      <a href="Films.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0A4DA6"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/02</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Films</span></a>
+      <a href="About.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/03</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">About</span></a>
+      <a href="Jallosh.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/04</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Jallosh</span></a>
+      <a href="Contact.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0 16px;border-bottom:1px solid #0a0a0a;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/05</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Contact</span></a>
+      <a href="mailto:info@everestent.in" style="margin-top:5vh;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:#6e6e73">INFO@EVERESTENT.IN</a>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="Films header" style="padding:150px 24px 64px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( The Everest Collection )</span><span style="color:#6e6e73">Home / Films &amp; Library</span></div>
+    <div style="max-width:960px;margin:0 auto;text-align:center;padding-top:44px">
+      <h1 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(46px,7.2vw,116px);line-height:.92;letter-spacing:.005em;color:#0a0a0a;text-transform:uppercase;text-wrap:balance">Over 260 films. One collection.</h1>
+      <p style="margin:28px auto 0;max-width:640px;font-size:17px;line-height:1.6;color:#424245">For over 25 years, Everest Entertainment has been at the forefront of Marathi cinema, building one of India's largest and most celebrated film libraries with over 260 titles.</p>
+      <p style="margin:20px auto 0;max-width:680px;font-size:15px;line-height:1.65;color:#6e6e73">Our collection spans timeless classics, National Award-winning films, blockbuster entertainers, historical epics, family favourites, and contemporary cinema, reflecting the rich legacy and evolving landscape of Marathi storytelling.</p>
+      <sc-if value="{{ legacyOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:fadeIn .5s ease both">
+          <p style="margin:20px auto 0;max-width:680px;font-size:15px;line-height:1.65;color:#6e6e73">Our catalogue features some of the most iconic films in Marathi cinema, including <em>Mee Shivajiraje Bhosale Boltoy</em>, <em>Tukaram</em>, <em>Pawankhind</em>, <em>Chandramukhi</em>, <em>Subhedar</em>, <em>Maharashtra Shaheer</em>, the <em>Mumbai Pune Mumbai</em> franchise, the <em>Boyz</em> franchise (<em>Boyz 2</em>, <em>Boyz 3</em>, <em>Boyz 4</em>), <em>Gulkand</em>, <em>Moraya</em>, and <em>Naach Ga Ghuma</em>, among many others. It also proudly includes the complete film collection of the legendary <strong>DADA KONDKE</strong>, preserving the legacy of one of Marathi cinema's most iconic entertainers and ensuring that his timeless classics continue to delight audiences for generations to come.</p>
+          <p style="margin:20px auto 0;max-width:680px;font-size:15px;line-height:1.65;color:#6e6e73">Whether you're revisiting a beloved classic or discovering Marathi cinema for the very first time, every film in the Everest collection reflects our enduring commitment to preserving, celebrating, and sharing the very best of Marathi cinema with audiences across the world. Together, these films represent a living legacy — honouring the rich heritage of Marathi cinema while continuing to inspire and entertain new generations of audiences.</p>
+        </div>
+      </sc-if>
+      <button type="button" onClick="{{ toggleLegacy }}" style="background:none;border:none;padding:0;cursor:pointer;color:#0A4DA6;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:26px">{{ legacyLabel }}</button>
+    </div>
+  </div>
+</header>
+
+<div data-screen-label="Marquee" style="background:#0a0a0a;overflow:hidden;padding:14px 0">
+  <div style="display:flex;width:max-content;animation:marq 32s linear infinite">
+    <span style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">260+ Films <span style="color:#6FA8FF">▲</span> 50 Nataks <span style="color:#6FA8FF">▲</span> 800+ Songs <span style="color:#6FA8FF">▲</span> Six decades <span style="color:#6FA8FF">▲</span> 260+ Films <span style="color:#6FA8FF">▲</span> 50 Nataks <span style="color:#6FA8FF">▲</span> 800+ Songs <span style="color:#6FA8FF">▲</span> Six decades <span style="color:#6FA8FF">▲</span> </span>
+    <span aria-hidden="true" style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;text-transform:uppercase;white-space:nowrap;padding-right:40px">260+ Films <span style="color:#6FA8FF">▲</span> 50 Nataks <span style="color:#6FA8FF">▲</span> 800+ Songs <span style="color:#6FA8FF">▲</span> Six decades <span style="color:#6FA8FF">▲</span> 260+ Films <span style="color:#6FA8FF">▲</span> 50 Nataks <span style="color:#6FA8FF">▲</span> 800+ Songs <span style="color:#6FA8FF">▲</span> Six decades <span style="color:#6FA8FF">▲</span> </span>
+  </div>
+</div>
+
+<div data-screen-label="Decade filter" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid #0a0a0a">
+  <div style="max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap">
+    <sc-for list="{{ decadeBar }}" as="d" hint-placeholder-count="8">
+      <button type="button" onClick="{{ d.onClick }}" style="border:1px solid #0a0a0a;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;background:{{ d.bg }};color:{{ d.fg }};transition:background .25s,color .25s">{{ d.label }}</button>
+    </sc-for>
+  </div>
+</div>
+
+<section data-screen-label="Poster grid" style="padding:56px 24px 40px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73;margin-bottom:38px">[ {{ countLabel }} ]</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:26px 22px">
+      <sc-for list="{{ films }}" as="f" hint-placeholder-count="18">
+        <div style="animation:fadeIn .6s ease both">
+          <img src="{{ f.src }}" alt="{{ f.alt }}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;background:#f2f2f3;display:block;outline:1px solid #0a0a0a;outline-offset:-1px;filter:grayscale(1);transition:filter .35s ease,transform .35s ease" style-hover="filter:grayscale(0);transform:translateY(-4px)">
+          <sc-if value="{{ showCaptions }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:9px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.02em;text-transform:uppercase;line-height:1.45;font-weight:500">{{ f.t }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0A4DA6;flex:0 0 auto">{{ f.y }}</span></div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:56px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.65;color:#6e6e73">Six decades of Marathi cinema — 155 titles shown above, with more across drama series and library extensions. <a href="Contact.dc.html">Request the full catalogue</a> for licensing.</p>
+  </div>
+</section>
+
+<section data-screen-label="Nataks" style="padding:100px 24px;background:#0a0a0a;color:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid rgba(255,255,255,.35);display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#6FA8FF">( The Everest Collection · Nataks )</span><span style="color:rgba(255,255,255,.5)">/ 02</span></div>
+    <div style="display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap;justify-content:center;padding-top:52px">
+      <div style="flex:0 0 auto;text-align:center">
+        <div style="font-family:'Anton',sans-serif;font-size:clamp(130px,17vw,240px);line-height:.85;color:#0A4DA6">50</div>
+        <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)">Iconic Nataks</div>
+      </div>
+      <div style="flex:1 1 460px;min-width:300px;max-width:640px">
+        <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(32px,4.4vw,58px);line-height:.96;text-transform:uppercase;color:#fff">50 iconic Nataks.</h2>
+        <p style="margin:24px 0 0;font-size:15.5px;line-height:1.68;color:rgba(255,255,255,.75)">Marathi theatre has long been the foundation of Maharashtra's rich storytelling tradition, and Everest Entertainment is proud to preserve and showcase some of its most celebrated stage productions. Our growing collection of over 50 iconic Nataks brings together timeless classics, unforgettable performances, and enduring stories that continue to captivate audiences across generations.</p>
+        <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:rgba(255,255,255,.75)">From Vijay Tendulkar's legendary <em>Sakharam Binder</em> and <em>Shantata! Court Chalu Aahe</em>, to Prashant Damle's immensely popular <em>Jadoo Teri Nazar</em> &amp; <em>Char Divas Premache</em> and Sharad Upadhye's acclaimed <em>Rashichakra</em>, our collection celebrates the finest voices, performers, and playwrights who have shaped Marathi theatre. Together, these productions preserve a remarkable theatrical legacy while introducing the magic of Marathi Nataks to audiences around the world.</p>
+        <p style="margin:22px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.45)">Natak titles and artwork are being added to the site — <a href="Contact.dc.html" style="color:#6FA8FF">get in touch</a> for the full stage catalogue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Collection stats" style="padding:74px 24px">
+  <div style="max-width:1200px;margin:0 auto;border-top:1px solid #0a0a0a;border-bottom:1px solid #0a0a0a;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 40%">
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0A4DA6">260+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Films in the collection</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">50</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Iconic Nataks</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">800+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Songs</div></div>
+    <div style="border-left:1px solid #0a0a0a;padding:26px 22px 30px"><div style="font-family:'Anton',sans-serif;font-size:clamp(56px,6.5vw,96px);line-height:.95;color:#0a0a0a">25+</div><div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Years of cinema</div></div>
+  </div>
+</section>
+
+<section data-screen-label="Catalogue CTA" style="padding:40px 24px 120px">
+  <div style="max-width:1200px;margin:0 auto;border:1px solid #0a0a0a;padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px);text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#0A4DA6">( License from Everest )</div>
+    <h2 style="margin:20px auto 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.6vw,80px);line-height:.96;text-transform:uppercase;color:#0a0a0a;text-wrap:balance">Want the full catalogue?</h2>
+    <p style="margin:24px auto 0;max-width:520px;font-size:17px;line-height:1.6;color:#424245">Tell us the window, the platform and the audience — we'll build a package that fits.</p>
+    <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#0a0a0a;color:#fff;padding:16px 30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase" style-hover="background:#0A4DA6;opacity:1">Request access →</a>
+  </div>
+</section>
+
+<footer style="border-top:2px solid #0a0a0a;padding:24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:10px;vertical-align:2px">▲</span></a>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase"><a href="Films.dc.html" style="color:#6e6e73">Films</a><a href="About.dc.html" style="color:#6e6e73">About</a><a href="Jallosh.dc.html" style="color:#6e6e73">Jallosh</a><a href="Contact.dc.html" style="color:#6e6e73">Contact</a><a href="mailto:info@everestent.in" style="color:#6e6e73">info@everestent.in</a></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#a1a1a6">© 2026 EVEREST ENTERTAINMENT LLP · MUMBAI</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;decade&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;All films&quot;, &quot;options&quot;: [&quot;All films&quot;, &quot;2020s&quot;, &quot;2010s&quot;, &quot;2000s&quot;, &quot;90s&quot;, &quot;80s&quot;, &quot;70s&quot;, &quot;60s&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Library&quot;}, &quot;showCaptions&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Library&quot;}}">
+class Component extends DCLogic {
+  state = { filter: null, legacy: false, menu: false };
+  static DATA = [
+    [2021,'Picasso','picasso.jpg'],[2019,'Hirkani','hirkani.jpg'],[2018,'Aamhi Doghi','aamhi-doghi.jpg'],[2018,'Baban','baban.jpg'],[2018,'Farzand','farzand.jpg'],
+    [2017,'Baapjanma','baap-janma.jpg'],[2017,'Baghtos Kay Mujara Kar','baghtos.jpg'],[2017,'Baghtos Kay Mujara Kar','baghtos-kay-mujra-kar.jpg'],[2016,'YZ','yz.jpg'],
+    [2015,'Coffee Ani Barach Kahi','coffee.jpg'],[2015,'Daagdi Chaawl','daagdi-chaal.jpg'],[2015,'Mumbai Pune Mumbai 2','mpm2.png'],[2015,'Mumbai Pune Mumbai 2','mumbai-pune-mumbai-2.png'],
+    [2015,'Rajwade & Sons','rajwade.jpg'],[2015,'Rajwade And Sons','rajwade-and-sons.jpg'],[2015,'Sandook','sandook.jpg'],[2014,'Happy Journey','happy-journey.jpg'],
+    [2014,'Ishq Wala Love','ishq-wala-love.jpg'],[2013,'Aajcha Divas Majha','aajcha-divas-majha.jpg'],[2013,'Dhamdhoom','dhamdhoom.jpg'],[2013,'Popat','popat.jpg'],
+    [2013,'Prem Mhanje Prem Mhanje Prem Asta','prem-mhanje.jpg'],[2013,'Prem Mhanje Prem Mhanje Prem Asta','prem-mhanje-prem-mhanje-prem-asta.jpg'],[2013,'Premachi Goshta','premachi-goshta.jpg'],
+    [2013,'Time Please','time-please.jpg'],[2012,'Hridaynath','hridaynath.jpg'],[2012,'Satrangi Re','satrangi-re.jpg'],[2012,'Tukaram','tukaram.jpg'],[2011,'Bal Gandharva','bal-gandharva.png'],
+    [2011,'Deool','deool.jpg'],[2011,'Fakta Ladh Mhana','fakta-ladh-mhana.jpg'],[2011,'Khel Mandala','khel-mandala.jpg'],[2011,'Morya','morya.jpg'],[2011,'Sagla Karun Bhaagle','sagla-karun-bhaagle.jpg'],
+    [2011,'Shanpan Dega Devaa','shanpan-dega-devaa.jpg'],[2010,'Aata Pita','aata-pita.jpg'],[2010,'Agadbam','agadbam.jpg'],[2010,'Chal Dhar Pakkad','chal-dhar-pakkad.jpg'],
+    [2010,'City Of Gold','city-of-gold.jpg'],[2010,'Haapus','haapus.jpg'],[2010,'Ideachi Kalpana','ideachi-kalpana.jpg'],[2010,'Iraada Pakka','iraada-pakka.jpg'],
+    [2010,'Kshanbhar Vishranti','kshanbhar-vishranti.jpg'],[2010,'Ladi Godi','ladi-godi.jpg'],[2010,'Lalbaug Parel','lalbaug-parel.jpg'],[2010,'Lapun Chapun','lapun-chupun.jpg'],
+    [2010,'Mumbai Pune Mumbai','mpm.jpg'],[2010,'Mumbai Pune Mumbai','mumbai-pune-mumbai.jpg'],[2010,'Paradh','paradh.jpg'],[2010,'Ranbhool','ranbhool.jpg'],
+    [2010,'Shikshanachya Aaicha Gho','shikshanachya.jpg'],[2010,'Shikshanachya Aaicha Gho','shikshanachya-aaicha-gho.jpg'],[2010,'Sumbaran','sumbaran.jpg'],[2010,'Ti Ratra','ti-ratra.jpg'],
+    [2009,'Adi Maaya Adi Shakti','adi-maaya-adi-shakti.jpg'],[2009,'Ek Cup Chya','ek-cup-chya.jpg'],[2009,'Gabhricha Paus','gabhricha-paus.jpg'],[2009,'Gulmohar','gulmohar.jpg'],
+    [2009,'Hello Gandhe Sir','hello-gandhe-sir.jpg'],[2009,'Mee Shivajiraje Bhosale Boltoy','me-shivajiraje.jpg'],[2009,'Mee Shivajiraje Bhosale Boltoy','mee-shivajiraje-bhosale-boltoy.jpg'],
+    [2009,'Varaat Aali Gharaat','varaat-aali-gharaat.jpg'],[2009,'Zenda','zenda.jpg'],[2008,'Baap Re Baap Dokyala Taap','baap-re-baap-dokyala-taap.jpg'],[2008,'Baba Lagin','baba-lagin.jpg'],
+    [2008,'Doghat Tisra Ata Sagda Visra','doghat-tisra-ata-sagda-visra.jpg'],[2008,'Don Baika Fajiti Aika','don-baika-fajiti-aika.jpg'],[2008,'Hari Om Vithala','hari-om-vithala.jpg'],
+    [2008,'Sakhi','sakhi.jpg'],[2008,'Sanai Choughade','sanai-choughade.jpg'],[2008,'Sasu Numbri Jawai Dus Numbri','sasu-numbri-jawai-dus-numbri.jpg'],[2008,'Valu','valu.jpg'],
+    [2007,'Arre Devaa','arre-devaa.jpg'],[2007,'Bharat Aala Parat','bharat-aala-parat.jpg'],[2007,'Devrai','devrai.jpg'],[2007,'Jau Tithe Khau','jau-tithe-khau.jpg'],
+    [2007,'Kadachit','kadachit.jpg'],[2007,'Lagnacha Dhumdhadaka','lagnacha-dhumdhadaka.jpg'],[2007,'Mumbaicha Dabbewala','mumbaicha-dabbewala.jpg'],[2006,'Anandache Jhaad','anandache-jhaad.jpg'],
+    [2006,'Badha','badha.jpg'],[2006,'Gauri','gauri.jpg'],[2006,'Matichya Chuli','matichya-chuli.jpg'],[2006,'Vishwas','vishwas.jpg'],[2006,'Yanda Kartavya Aahe','yanda-kartavya-aahe.jpg'],
+    [2005,'Amhi Asu Laadke','amhi-asu-laadke.jpg'],[2005,'Kaydyacha Bola','kaydyacha-bola.jpg'],[2005,'Munna Bhai Ssc','munna-bhai-ssc.jpg'],[2005,'Sarivar Sari','sarivar-sari.jpg'],
+    [2005,'Sawaal Maza Premacha','sawaal-maza-premacha.jpg'],[2004,'Aai Tujha Ashirwad','aai-tujha-ashirwad.jpg'],[2004,'He Aapla Asach Chalaych','he-aapla-asach-chalaych.jpg'],
+    [2004,'Oti Krishnamaichi','oti-krishnamaichi.jpg'],[2004,'Satchyat Aat Gharaat','satchyat-aat-gharaat.jpg'],[2004,'Shegavicha Rana Gajanan','shegavicha-rana-gajanan.jpg'],
+    [2003,'Chutki','chutki.jpg'],[2003,'Vitthal Vitthal','vitthal-vitthal.jpg'],[2002,'Bhet','bhet.jpg'],[2002,'Dahavi Fa','dahavi-fa.jpg'],[2002,'Owalini','owalini.jpg'],
+    [2001,'Devki','devki.jpg'],[2000,'Astitva','astitva.jpg'],[2000,'Barkha Satarkar','barkha-satarkar.jpg'],[2000,'No Problem','no-problem.jpg'],
+    [1999,'Aai Thor Tujhe Upkaar','aai-thor-tujhe-upkaar.jpg'],[1999,'Ghara Baher','ghara-baher.jpg'],[1998,'Tu Tithe Mee','tu-tithe-mee.jpg'],[1997,'Saasuchi Maaya','saasuchi-maaya.jpg'],
+    [1996,'Putravati','putravati.jpg'],[1995,'Jamla Ho Jamla','jamla-ho-jamla.jpg'],[1995,'Zakhmi Kunku','zakhmi-kunku.jpg'],[1994,'Sukhi Sansarachi 12 Sutre','sukhi-sansarachi-12-sutre.jpg'],
+    [1993,'Lapandav','lapandav.jpg'],[1993,'Lavanyavati','lavanyavati.jpg'],[1993,'Sawat Mazi Laadki','sawat-mazi-laadki.jpg'],[1992,'Aapan Yana Pahilat Ka','aapan-yana-pahilat-ka.jpg'],
+    [1992,'Shubh Mangal Savadhan','shubh-mangal-savadhan.jpg'],[1991,'Bandhan','bandhan.jpg'],[1991,'Chaukhat Raja','chaukhat-raja.jpg'],[1991,'Shame To Shame','shame-to-shame.jpg'],
+    [1991,'Yeda Ki Khula','yeda-ki-khula.jpg'],[1990,'Eka Peksha Ek','eka-peksha-ek.jpg'],[1990,'Godi Gulabi','godi-gulabi.jpg'],[1990,'Shejari Shejari','shejari-shejari.jpg'],
+    [1989,'Hamal De Dhamal','hamal-de-dhamal.jpg'],[1989,'Kalat Nakalat','kalat-nakalat.jpg'],[1989,'Pheka Pheki','pheka-pheki.jpg'],[1988,'Bandivan Mi Ya Sansaari','bandivan-mi-ya-sansaari.jpg'],
+    [1988,'Maza Pati Karodpati','maza-pati-karodpati.jpg'],[1987,'Gammat Jammat','gammat-jammat.jpg'],[1987,'Prema Sathi Vattel Te','prema-sathi-vattel-te.jpg'],
+    [1986,'Amhi Doghe Raja Rani','amhi-doghe-raja-rani.jpg'],[1985,'Gaon Tas Changal Pan Veshila Tangla','gaon-tas-changal-pan-veshila-tangla.jpg'],[1985,'Khichdi','khichdi.jpg'],
+    [1984,'Navri Mile Navryala','navri-mile-navryala.jpg'],[1983,'Devta','devta.jpg'],[1983,'He Daan Kunkuvache','he-daan-kunkvache.jpg'],[1982,'Chatak Chandani','chatak-chandani.jpg'],
+    [1982,'Galli Te Delhi','galli-te-delhi.jpg'],[1982,'Laxmichi Paule','laxmichi-paule.jpg'],[1981,'Albela','albela.jpg'],[1980,'Bhaloo','bhaloo.jpg'],
+    [1979,'Aapli Manse','aapli-manse.jpg'],[1979,'Sunbai Oti Bharun Ja','sunbai-oti-bharun-ja.jpg'],[1978,'Kalavanteen','kalavanteen.jpg'],[1977,'Bala Gau Kashi Angai','bala-gau-kashi-angai.jpg'],
+    [1976,'Araam Haraam Aahe','araam-haraam-aahe.jpg'],[1976,'Mera Jivan','mera-jivan.jpg'],[1975,'Bhakta Pundalik','bhakta-pundalik.jpg'],[1975,'Jyotibacha Navas','jyotibacha-navas.jpg'],
+    [1974,'Kora Kagaz','kora-kagaz.jpg'],[1973,'Anolkhi','anolkhi.jpg'],[1972,'Paanch Najuk Bote','paanch-najuk-bote.jpg'],[1971,'Tithe Nandate Laxmi','tithe-nandate-laxmi.jpg'],
+    [1968,'Amhi Jaato Amucha Gaon','amhi-jaato-amucha-gaon.jpg']
+  ];
+  decadeOf(y) { if (y >= 2020) return '2020s'; if (y >= 2010) return '2010s'; if (y >= 2000) return '2000s'; if (y >= 1990) return '90s'; if (y >= 1980) return '80s'; if (y >= 1970) return '70s'; return '60s'; }
+  renderVals() {
+    const B = 'https://everest-site-nu.vercel.app/assets/posters/';
+    const decades = ['All films', '2020s', '2010s', '2000s', '90s', '80s', '70s', '60s'];
+    const cur = this.state.filter ?? this.props.decade ?? 'All films';
+    const all = Component.DATA;
+    const shown = cur === 'All films' ? all : all.filter(f => this.decadeOf(f[0]) === cur);
+    return {
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      decadeBar: decades.map(d => ({
+        label: d,
+        bg: d === cur ? '#0a0a0a' : 'transparent',
+        fg: d === cur ? '#fff' : '#0a0a0a',
+        onClick: () => this.setState({ filter: d })
+      })),
+      films: shown.map(f => ({ y: f[0], t: f[1], src: B + f[2], alt: f[1] + ' poster' })),
+      countLabel: shown.length + (shown.length === 1 ? ' title' : ' titles') + (cur === 'All films' ? ' · 1968 — 2021' : ' · ' + cur),
+      showCaptions: this.props.showCaptions ?? true,
+      legacyOpen: this.state.legacy,
+      legacyLabel: this.state.legacy ? 'Close −' : 'Read about the living legacy +',
+      toggleLegacy: () => this.setState(s => ({ legacy: !s.legacy }))
+    };
+  }
+}
+</script>
+</body>
+</html>

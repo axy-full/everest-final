@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0A4DA6;text-decoration:none}
+a:hover{opacity:.75}
+::selection{background:#0A4DA6;color:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.05;background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.85%22%20numOctaves=%222%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22200%22%20height=%22200%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px 200px"></div>
+
+<nav style="position:absolute;top:0;left:0;right:0;z-index:80">
+  <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:12px 10px">
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+      <span style="display:block;width:20px;height:2px;background:#0a0a0a"></span>
+    </button>
+  </div>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:fadeIn .25s ease both;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 clamp(20px,3.5vw,40px)">
+      <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:17px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:11px;vertical-align:2px">▲</span></a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="background:none;border:none;cursor:pointer;font-size:30px;font-weight:300;color:#0a0a0a;line-height:1;padding:6px 12px">×</button>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:7vh clamp(20px,3.5vw,40px) 40px;display:flex;flex-direction:column;align-items:flex-start">
+      <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/01</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Home</span></a>
+      <a href="Films.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/02</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Films</span></a>
+      <a href="About.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/03</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">About</span></a>
+      <a href="Jallosh.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0;color:#0a0a0a"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/04</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Jallosh</span></a>
+      <a href="Contact.dc.html" style="display:flex;align-items:baseline;gap:18px;border-top:1px solid #0a0a0a;width:100%;padding:12px 0 16px;border-bottom:1px solid #0a0a0a;color:#0A4DA6"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6e6e73">/05</span><span style="font-family:'Anton',sans-serif;font-size:clamp(38px,6vw,64px);line-height:1;text-transform:uppercase">Contact</span></a>
+      <a href="mailto:info@everestent.in" style="margin-top:5vh;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:#6e6e73">INFO@EVERESTENT.IN</a>
+    </div>
+  </div>
+</sc-if>
+
+<header data-screen-label="Contact header" style="padding:150px 24px 70px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Contact us )</span><span style="color:#6e6e73">Home / Contact</span></div>
+    <div style="max-width:1000px;margin:0 auto;text-align:center;padding-top:44px">
+      <h1 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(34px,5vw,78px);line-height:.96;color:#0a0a0a;text-transform:uppercase;text-wrap:balance">Let's create the next chapter of Marathi entertainment — together.</h1>
+      <p style="margin:28px auto 0;max-width:700px;font-size:16.5px;line-height:1.65;color:#424245">Whether you're looking to license content, explore strategic partnerships, collaborate on original productions, advertise with us, or simply connect with our team, we'd love to hear from you. Together, let's continue taking the very best of Marathi entertainment to audiences around the world.</p>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Form and details" style="padding:40px 24px 110px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:80px;flex-wrap:wrap">
+    <div style="flex:1 1 460px;min-width:300px">
+      <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Send a message )</span><span style="color:#6e6e73">/ 01</span></div>
+      <h2 style="margin:28px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);text-transform:uppercase;line-height:1;color:#0a0a0a">Start here.</h2>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:7px"><label for="cf-name" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Name</label><input id="cf-name" type="text" style="border:1px solid #0a0a0a;border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:#0a0a0a;background:#fff;outline-color:#0A4DA6"></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><label for="cf-email" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Email</label><input id="cf-email" type="email" style="border:1px solid #0a0a0a;border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:#0a0a0a;background:#fff;outline-color:#0A4DA6"></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><label for="cf-org" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Company / Org</label><input id="cf-org" type="text" style="border:1px solid #0a0a0a;border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:#0a0a0a;background:#fff;outline-color:#0A4DA6"></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><label for="cf-topic" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">I'm here about</label><select id="cf-topic" style="border:1px solid #0a0a0a;border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:#0a0a0a;background:#fff;outline-color:#0A4DA6;appearance:none"><option>General Enquiries</option><option>Content Acquisition &amp; Production</option><option>Content Licensing &amp; Distribution</option><option>Platform Partnerships</option><option>Advertising &amp; Brand Collaborations</option><option>Press &amp; Media</option></select></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><label for="cf-msg" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Message</label><textarea id="cf-msg" rows="5" style="border:1px solid #0a0a0a;border-radius:0;padding:13px 16px;font-size:15px;font-family:inherit;color:#0a0a0a;background:#fff;outline-color:#0A4DA6;resize:vertical"></textarea></div>
+        <div><button type="button" onClick="{{ sendMessage }}" style="border:none;cursor:pointer;display:inline-flex;align-items:center;gap:12px;background:#0a0a0a;color:#fff;padding:16px 30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;transition:background .25s" style-hover="background:#0A4DA6">Send message →</button><div style="margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:#a1a1a6">OPENS YOUR MAIL APP ADDRESSED TO INFO@EVERESTENT.IN</div></div>
+      </div>
+    </div>
+    <div style="flex:1 1 340px;min-width:280px">
+      <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Reach us directly )</span><span style="color:#6e6e73">/ 02</span></div>
+      <h2 style="margin:28px 0 0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);text-transform:uppercase;line-height:1;color:#0a0a0a">The details.</h2>
+      <div style="margin-top:34px;display:flex;flex-direction:column;gap:26px">
+        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Email</div><a href="mailto:info@everestent.in" style="font-size:16px;font-weight:600;margin-top:6px;display:inline-block">info@everestent.in</a></div>
+        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Studio</div><div style="font-size:15px;line-height:1.6;margin-top:6px;color:#424245">Everest Entertainment LLP<br>Mumbai, Maharashtra, India</div></div>
+        <div style="border-top:1px solid #0a0a0a;padding-top:24px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Direct to a division</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+            <a href="mailto:production@everestent.in" style="border:1px solid #0a0a0a;padding:9px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#0a0a0a;transition:background .25s" style-hover="background:#0a0a0a;color:#fff;opacity:1">Production</a>
+            <a href="mailto:licensing@everestent.in" style="border:1px solid #0a0a0a;padding:9px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#0a0a0a;transition:background .25s" style-hover="background:#0a0a0a;color:#fff;opacity:1">Syndication</a>
+            <a href="mailto:digital@everestent.in" style="border:1px solid #0a0a0a;padding:9px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#0a0a0a;transition:background .25s" style-hover="background:#0a0a0a;color:#fff;opacity:1">Digital</a>
+            <a href="mailto:music@everestent.in" style="border:1px solid #0a0a0a;padding:9px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#0a0a0a;transition:background .25s" style-hover="background:#0a0a0a;color:#fff;opacity:1">Music</a>
+          </div>
+        </div>
+        <div style="border-top:1px solid #0a0a0a;padding-top:24px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e6e73">Follow</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+            <a href="https://www.youtube.com/@EverestTalkies01" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500">YouTube — Everest Talkies →</a>
+            <a href="https://twitter.com/sgchhabria" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500">X / Twitter — @sgchhabria →</a>
+            <a href="https://www.linkedin.com/in/sanjay-chhabria-8ba72620" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500">LinkedIn — Sanjay Chhabria →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="What brings you here" style="padding:0 24px 110px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( How we can help )</span><span style="color:#6e6e73">/ 03</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:.96;color:#0a0a0a;text-transform:uppercase">What brings you here?</h2>
+      <p style="margin:22px auto 0;max-width:520px;font-size:17px;line-height:1.6;color:#424245">Choose the conversation — the right team picks it up from there.</p>
+    </div>
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
+      <sc-for list="{{ helpItems }}" as="h" hint-placeholder-count="5">
+        <div style="border:1px solid #0a0a0a;padding:26px"><div style="font-family:'Anton',sans-serif;font-size:34px;line-height:1;color:#0A4DA6">{{ h.n }}</div><div style="font-family:'Anton',sans-serif;font-size:19px;text-transform:uppercase;margin-top:14px;line-height:1.15">{{ h.t }}</div><div style="font-size:13.5px;color:#6e6e73;margin-top:8px;line-height:1.6">{{ h.d }}</div></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="padding:0 24px 120px">
+  <div style="max-width:940px;margin:0 auto">
+    <div style="border-top:1px solid #0a0a0a;display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase"><span style="color:#0A4DA6">( Good to know )</span><span style="color:#6e6e73">/ 04</span></div>
+    <div style="padding-top:46px;text-align:center;animation:fadeUp .9s ease both;animation-timeline:view();animation-range:entry 0% entry 42%">
+      <h2 style="margin:0;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(38px,5.4vw,72px);line-height:.96;color:#0a0a0a;text-transform:uppercase">Frequently asked questions.</h2>
+    </div>
+    <div style="margin-top:52px;border-top:1px solid #0a0a0a">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="14">
+        <div style="border-bottom:1px solid #0a0a0a">
+          <div onClick="{{ f.onClick }}" role="button" style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 4px;cursor:pointer" style-hover="background:#f5f5f7">
+            <span style="font-size:16px;font-weight:600;line-height:1.45">{{ f.q }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#0A4DA6;line-height:1;flex:0 0 auto">{{ f.sign }}</span>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 4px 26px;font-size:15px;line-height:1.7;color:#424245;max-width:780px;animation:fadeIn .4s ease both">{{ f.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:2px solid #0a0a0a;padding:24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="Home.dc.html" style="font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.08em;color:#0a0a0a">EVEREST <span style="color:#0A4DA6;font-size:10px;vertical-align:2px">▲</span></a>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase"><a href="Films.dc.html" style="color:#6e6e73">Films</a><a href="About.dc.html" style="color:#6e6e73">About</a><a href="Jallosh.dc.html" style="color:#6e6e73">Jallosh</a><a href="Contact.dc.html" style="color:#6e6e73">Contact</a><a href="mailto:info@everestent.in" style="color:#6e6e73">info@everestent.in</a></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#a1a1a6">© 2026 EVEREST ENTERTAINMENT LLP · MUMBAI</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: null, menu: false };
+  static FAQS = [
+    ['What is Everest Entertainment?', "Everest Entertainment is one of Maharashtra's leading media and entertainment companies, dedicated to creating, producing, curating, preserving, and distributing premium Marathi films, Nataks, music, and original content. For over 25 years, we have brought timeless Marathi stories to audiences across theatres, television, streaming platforms, and digital experiences, while building one of India's largest collections of Marathi entertainment."],
+    ['What makes Everest Entertainment different?', 'What sets Everest Entertainment apart is our unique combination of legacy and innovation. For over 25 years, we have built one of India\'s largest collections of Marathi films, Nataks, and music while continually embracing new platforms and technologies to reach audiences worldwide. From creating and preserving timeless classics to championing contemporary storytelling and building JALLOSH — the Marathi entertainment ecosystem of the future — we remain committed to taking the very best of Marathi entertainment to every generation.'],
+    ['What is the Everest Collection?', 'The Everest Collection is one of India\'s largest and most celebrated curated collections of Marathi entertainment, bringing together over 260 films, 50 iconic Nataks, and 800+ songs. From landmark films such as Mee Shivajiraje Bhosale Boltoy, Pawankhind, Naach Ga Ghuma, Subhedar, Maharashtra Shaheer, the Mumbai Pune Mumbai franchise, and the complete Dada Kondke collection, to legendary Nataks including Sakharam Binder, Shantata! Court Chalu Aahe, Jadoo Teri Nazar, and Rashichakra, along with memorable music from Photocopy, Mumbai Pune Mumbai, Chandramukhi, Maharashtra Shaheer, and Tukaram, the Everest Collection represents over 25 years of preserving, celebrating, and sharing the very best of Marathi entertainment for audiences across generations and around the world.'],
+    ['Does Everest Entertainment produce new films?', 'While preserving and celebrating Marathi cinema remains at the heart of Everest Entertainment, producing exceptional new content continues to be a core part of our vision. Over the years, we have produced some of Marathi cinema\'s most celebrated films, including Mee Shivajiraje Bhosale Boltoy, Coffee Ani Barach Kahi, the Mumbai Pune Mumbai franchise, Maharashtra Shaheer, Gulkand and the Boyz franchise. We continue to invest in the future of Marathi entertainment with an exciting slate of feature films and original series currently in development. Upcoming productions include Albatya Galbatya, an ambitious 3D fantasy adventure inspired by one of Maharashtra\'s most beloved characters, and the much awaited sequel to the blockbuster Mee Shivajiraje Bhosale Boltoy. Together, these projects reflect our vision of creating world-class Marathi entertainment for generations to come.'],
+    ['What kind of films does Everest create?', 'Everest Entertainment creates films across a diverse spectrum of genres, from family entertainers, historical epics, and heartwarming dramas to comedies, romances, thrillers, children\'s films, and culturally rooted stories that celebrate the spirit of Maharashtra. Our portfolio includes acclaimed films such as Mee Shivajiraje Bhosale Boltoy, Tukaram, Aamhi Doghi, Coffee Ani Barach Kahi, Aajcha Divas Majha, Gulkand, the Mumbai Pune Mumbai franchise, and Boyz, reflecting our passion for bringing every shade of Marathi storytelling to audiences across generations.'],
+    ['Does Everest own film and music rights?', 'Everest Entertainment owns one of India\'s largest curated collections of Marathi film and music rights. Through a combination of owned intellectual property, long-term media rights and strategic acquisitions, we continue to preserve, distribute, and showcase Marathi entertainment across theatres, television, OTT platforms, FAST Channels, music streaming services, and digital platforms around the world.'],
+    ['Can broadcasters and streaming platforms license content from Everest Entertainment?', 'Everest Entertainment licenses its extensive catalogue of Marathi films, Nataks, music, and other entertainment content to broadcasters, OTT platforms, FAST Channels, Connected TV platforms, airlines, hospitality providers, and international distributors. If you\'re interested in licensing our collection, we\'d be delighted to hear from you.'],
+    ['What are Everest FAST Channels?', 'Everest FAST Channels are free ad-supported streaming television (FAST) channels that bring curated Marathi movies, Nataks, music, and entertainment to Connected TV audiences. Available through leading Smart TV manufacturers (OEMs) and streaming platforms, they offer viewers a lean-back, television-like experience without the need for a subscription. Curated under the JALLOSH brand, our FAST Channels make the very best of Marathi entertainment more accessible than ever before.'],
+    ['What is Jallosh?', 'JALLOSH is Everest Entertainment\'s consumer-facing brand, bringing together the very best of Marathi entertainment across FAST Channels, Amazon Prime Video Channels, Smart TVs, and our upcoming app. From timeless classics and blockbuster films to iconic Nataks, music, original series, devotional content, and exclusive programming, JALLOSH is designed to be the home of Marathi entertainment for audiences around the world.'],
+    ['Where can I watch Everest films?', 'Everest\'s content is available across cinemas, leading television broadcasters, OTT platforms, and our official YouTube channels — Everest Talkies and Marathi Talkies. Audiences can also enjoy our films, Nataks, and music through the JALLOSH FAST Channels, the JALLOSH Channel on Amazon Prime Video, and our upcoming JALLOSH app, making the very best of Marathi entertainment accessible wherever they choose to watch.'],
+    ['Does Everest work with filmmakers and creative talent?', 'Discovering and nurturing new creative talent has always been an integral part of Everest Entertainment\'s journey. Over the years, we have provided opportunities to more than 10 first-time directors, many of whom have gone on to establish successful careers in Hindi cinema. We continue to work with writers, directors, producers, actors, musicians, and creative collaborators who share our passion for exceptional Marathi storytelling. Whether you\'re an established filmmaker or an emerging talent with a compelling story to tell, we\'d love to hear from you.'],
+    ['Does Everest partner with brands and advertisers?', 'Everest Entertainment collaborates with brands, advertisers, and strategic partners to create integrated marketing campaigns, branded entertainment, sponsorships, and content partnerships that connect authentically with Marathi audiences across multiple platforms.'],
+    ['Does Everest distribute Marathi content internationally?', 'Yes. Everest Entertainment works with leading international distributors and digital platforms to bring Marathi films, Nataks, and music to audiences around the world. Through our global partnerships, we continue to expand the reach of Marathi entertainment and connect audiences across generations.'],
+    ['Does Everest produce original series and web shows?', 'As part of our vision to build the future of Marathi entertainment, Everest Entertainment is actively developing original series and web shows across a range of genres. Alongside our feature film slate, we are committed to creating compelling digital-first stories for audiences on OTT platforms and JALLOSH.']
+  ];
+  sendMessage() {
+    const v = id => (document.getElementById(id) || {}).value || '';
+    const topic = v('cf-topic') || 'General Enquiries';
+    const body = 'Name: ' + v('cf-name') + '\nEmail: ' + v('cf-email') + '\nCompany / Org: ' + v('cf-org') + '\n\n' + v('cf-msg');
+    window.location.href = 'mailto:info@everestent.in?subject=' + encodeURIComponent(topic + ' — via everestent.in') + '&body=' + encodeURIComponent(body);
+  }
+  renderVals() {
+    return {
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      sendMessage: () => this.sendMessage(),
+      helpItems: [
+        { n: '01', t: 'Content Acquisition & Production', d: "Have a compelling script, story, or project? We'd love to explore opportunities to create and bring exceptional Marathi stories to life." },
+        { n: '02', t: 'Content Licensing & Distribution', d: 'Film licensing, catalogue acquisitions, domestic and international distribution, television, digital, and content syndication.' },
+        { n: '03', t: 'Platform Partnerships', d: 'OTT, broadcast, FAST Channels, Smart TV platforms, Amazon Prime Video Channels, and strategic distribution partnerships.' },
+        { n: '04', t: 'Advertising & Brand Collaborations', d: 'Brand integrations, sponsorships, co-branded campaigns, and innovative entertainment partnerships.' },
+        { n: '05', t: 'General Enquiries', d: 'For all other business enquiries, collaborations, or opportunities, our team is here to help.' }
+      ],
+      faqs: Component.FAQS.map((f, i) => ({
+        q: f[0], a: f[1],
+        open: this.state.open === i,
+        sign: this.state.open === i ? '−' : '+',
+        onClick: () => this.setState(s => ({ open: s.open === i ? null : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
