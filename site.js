@@ -114,6 +114,32 @@
       if (Math.abs(dx) > 44) stageGo(sIdx + (dx < 0 ? 1 : -1));
       touchX = null;
     }, { passive: true });
+
+    /* Mouse: horizontal wheel/trackpad rotates the ring (vertical scroll
+       passes through untouched); dragging works like a swipe. */
+    var wheelLock = 0;
+    stage.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      var now = Date.now();
+      if (now - wheelLock < 450 || Math.abs(e.deltaX) < 10) return;
+      wheelLock = now;
+      stageGo(sIdx + (e.deltaX > 0 ? 1 : -1));
+    }, { passive: false });
+    var dragX = null;
+    var dragEnd = 0;
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') dragX = e.clientX;
+    });
+    window.addEventListener('pointerup', function (e) {
+      if (dragX === null) return;
+      var dx = e.clientX - dragX;
+      dragX = null;
+      if (Math.abs(dx) > 44) { dragEnd = Date.now(); stageGo(sIdx + (dx < 0 ? 1 : -1)); }
+    });
+    stage.addEventListener('click', function (e) {
+      if (Date.now() - dragEnd < 250) { e.stopPropagation(); e.preventDefault(); }
+    }, true);
     var flipM = location.search.match(/[?&]flip=(\d+)/);
     stageRender();
     if (flipM && sCards[+flipM[1]]) {
