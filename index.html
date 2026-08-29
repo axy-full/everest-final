@@ -99,26 +99,23 @@
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
+<section style="padding:0 0 110px">
+  <div class="wrap" style="padding:0 24px">
     <div class="eyebrow"><span class="l">( What we do )</span><span class="r">/ 01</span></div>
     <div class="sec-head fade">
       <h2 class="h2">Four divisions, one summit.</h2>
       <p class="dek">Everything a story needs to be made, seen and heard — under one roof.</p>
     </div>
-
-    <div class="div-deck fade" id="div-deck">
-      <div class="flip-card" role="button" tabindex="0" aria-label="Production — tap to flip">
+  </div>
+  <div class="deck-band">
+    <div class="stage" id="div-stage">
+      <div class="flip-card" role="button" tabindex="0" data-name="Production" data-tag="Original Marathi & Hindi films, dramas and comedies — developed, shot and finished in-house." aria-label="Production division">
         <div class="flip-inner">
           <div class="flip-front">
             <img src="assets/posters/me-shivajiraje.jpg" alt="Production" loading="lazy">
             <div class="scrim"></div>
+            <span class="ctag">#Original films</span>
             <div class="num">01</div>
-            <div class="fbody">
-              <div class="ft">Production</div>
-              <div class="fd">Original Marathi &amp; Hindi films, dramas and comedies — developed, shot and finished in-house.</div>
-              <div class="hint">( Tap for details )</div>
-            </div>
           </div>
           <div class="flip-back">
             <span class="close">( tap to close )</span>
@@ -129,17 +126,13 @@
           </div>
         </div>
       </div>
-      <div class="flip-card" role="button" tabindex="0" aria-label="Syndication — tap to flip">
+      <div class="flip-card" role="button" tabindex="0" data-name="Syndication" data-tag="A 260+ film library licensed across satellite, cable and broadcast partners." aria-label="Syndication division">
         <div class="flip-inner">
           <div class="flip-front">
             <img src="assets/posters/daagdi-chaal.jpg" alt="Syndication" loading="lazy">
             <div class="scrim"></div>
+            <span class="ctag">#The library</span>
             <div class="num">02</div>
-            <div class="fbody">
-              <div class="ft">Syndication</div>
-              <div class="fd">A 260+ film library licensed across satellite, cable and broadcast partners.</div>
-              <div class="hint">( Tap for details )</div>
-            </div>
           </div>
           <div class="flip-back">
             <span class="close">( tap to close )</span>
@@ -150,17 +143,13 @@
           </div>
         </div>
       </div>
-      <div class="flip-card" role="button" tabindex="0" aria-label="Digital — tap to flip">
+      <div class="flip-card" role="button" tabindex="0" data-name="Digital" data-tag="Streaming, OTT licensing and a YouTube presence that reaches millions every month." aria-label="Digital division">
         <div class="flip-inner">
           <div class="flip-front">
             <img src="assets/posters/sandook.jpg" alt="Digital" loading="lazy">
             <div class="scrim"></div>
+            <span class="ctag">#Streaming</span>
             <div class="num">03</div>
-            <div class="fbody">
-              <div class="ft">Digital</div>
-              <div class="fd">Streaming, OTT licensing and a YouTube presence that reaches millions every month.</div>
-              <div class="hint">( Tap for details )</div>
-            </div>
           </div>
           <div class="flip-back">
             <span class="close">( tap to close )</span>
@@ -171,17 +160,13 @@
           </div>
         </div>
       </div>
-      <div class="flip-card" role="button" tabindex="0" aria-label="Music — tap to flip">
+      <div class="flip-card" role="button" tabindex="0" data-name="Music" data-tag="Soundtracks and devotional catalogue, distributed across every digital music platform." aria-label="Music division">
         <div class="flip-inner">
           <div class="flip-front">
             <img src="assets/posters/coffee.jpg" alt="Music" loading="lazy">
             <div class="scrim"></div>
+            <span class="ctag">#Songs</span>
             <div class="num">04</div>
-            <div class="fbody">
-              <div class="ft">Music</div>
-              <div class="fd">Soundtracks and devotional catalogue, distributed across every digital music platform.</div>
-              <div class="hint">( Tap for details )</div>
-            </div>
           </div>
           <div class="flip-back">
             <span class="close">( tap to close )</span>
@@ -192,11 +177,20 @@
           </div>
         </div>
       </div>
+      <div class="stage-title" id="stage-title">
+        <div class="st-name" id="st-name">Production</div>
+        <div class="st-rule"></div>
+        <div class="st-tag" id="st-tag"></div>
+        <div class="st-hint">( Tap the card for details )</div>
+      </div>
     </div>
-    <div class="strip-ctrl">
-      <button type="button" class="reel-btn" data-strip-prev="div-deck" aria-label="Scroll divisions left">←</button>
-      <span class="mono-note" style="color:var(--sec);font-size:11px">( Tap a card to flip it — every division has its own page )</span>
-      <button type="button" class="reel-btn" data-strip-next="div-deck" aria-label="Scroll divisions right">→</button>
+    <button type="button" class="stage-arrow prev" data-stage-prev aria-label="Previous division">‹</button>
+    <button type="button" class="stage-arrow next" data-stage-next aria-label="Next division">›</button>
+    <div class="deck-dots">
+      <button type="button" class="reel-dot" aria-label="Production"></button>
+      <button type="button" class="reel-dot" aria-label="Syndication"></button>
+      <button type="button" class="reel-dot" aria-label="Digital"></button>
+      <button type="button" class="reel-dot" aria-label="Music"></button>
     </div>
   </div>
 </section>

@@ -57,20 +57,69 @@
     });
   });
 
-  /* Division deck — click/tap flips a card; links on the back still work */
-  document.querySelectorAll('.flip-card').forEach(function (card) {
-    card.addEventListener('click', function (e) {
-      if (e.target.closest('a')) return;
-      card.classList.toggle('flipped');
+  /* Division stage — 3D carousel; side cards centre on tap, the centre card
+     flips for details, links on the back still navigate */
+  var stage = document.getElementById('div-stage');
+  if (stage) {
+    var sCards = Array.prototype.slice.call(stage.querySelectorAll('.flip-card'));
+    var sN = sCards.length;
+    var sIdx = 0;
+    var sTitle = document.getElementById('stage-title');
+    var stName = document.getElementById('st-name');
+    var stTag = document.getElementById('st-tag');
+    var sDots = Array.prototype.slice.call(document.querySelectorAll('.deck-dots .reel-dot'));
+
+    function stageRender() {
+      sCards.forEach(function (c, i) {
+        var d = (i - sIdx + sN) % sN;
+        c.classList.remove('pos-0', 'pos-l', 'pos-r', 'pos-back', 'flipped');
+        if (d === 0) c.classList.add('pos-0');
+        else if (d === 1) c.classList.add('pos-r');
+        else if (d === sN - 1) c.classList.add('pos-l');
+        else c.classList.add('pos-back');
+        c.setAttribute('tabindex', d === 0 ? '0' : '-1');
+      });
+      var a = sCards[sIdx];
+      stName.textContent = a.getAttribute('data-name');
+      stTag.textContent = a.getAttribute('data-tag');
+      sTitle.classList.remove('hide');
+      sDots.forEach(function (d, i) { d.classList.toggle('on', i === sIdx); });
+    }
+    function stageGo(i) { sIdx = (i + sN) % sN; stageRender(); }
+    function centreFlip(card) {
+      var flipped = card.classList.toggle('flipped');
+      sTitle.classList.toggle('hide', flipped);
+    }
+    sCards.forEach(function (card, i) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        if (i === sIdx) centreFlip(card); else stageGo(i);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (i === sIdx) centreFlip(card); else stageGo(i); }
+      });
     });
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flipped'); }
+    document.querySelectorAll('[data-stage-prev]').forEach(function (b) {
+      b.addEventListener('click', function () { stageGo(sIdx - 1); });
     });
-  });
-  var flipM = location.search.match(/[?&]flip=(\d+)/);
-  if (flipM) {
-    var fc = document.querySelectorAll('.flip-card');
-    if (fc[+flipM[1]]) fc[+flipM[1]].classList.add('flipped');
+    document.querySelectorAll('[data-stage-next]').forEach(function (b) {
+      b.addEventListener('click', function () { stageGo(sIdx + 1); });
+    });
+    sDots.forEach(function (d, i) { d.addEventListener('click', function () { stageGo(i); }); });
+    var touchX = null;
+    stage.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 44) stageGo(sIdx + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, { passive: true });
+    var flipM = location.search.match(/[?&]flip=(\d+)/);
+    stageRender();
+    if (flipM && sCards[+flipM[1]]) {
+      stageGo(+flipM[1]);
+      centreFlip(sCards[sIdx]);
+    }
   }
 
   /* Single-open accordions (FAQ) */

@@ -184,24 +184,37 @@ footer{border-top:2px solid var(--ink);padding:24px}
 .sec-head .dek{margin:22px auto 0;max-width:540px}
 .sec-head--row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;text-align:left}
 
-/* Division deck — scrollable flip cards */
-.div-deck{margin-top:56px;display:grid;grid-auto-flow:column;grid-auto-columns:clamp(250px,23vw,277px);gap:14px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--ink) var(--quiet)}
-.div-deck::-webkit-scrollbar{height:4px}
-.div-deck::-webkit-scrollbar-thumb{background:var(--ink)}
-.div-deck::-webkit-scrollbar-track{background:var(--quiet)}
-.flip-card{aspect-ratio:2/3;perspective:1400px;cursor:pointer;scroll-snap-align:start}
+/* Division stage — 3D cover-flow carousel of flip cards on a dark band */
+.deck-band{position:relative;background:var(--ink);margin-top:56px;padding:clamp(40px,5vw,70px) 0 clamp(34px,4vw,54px);overflow:hidden}
+.stage{position:relative;height:clamp(360px,42vw,520px);perspective:1500px;max-width:1200px;margin:0 auto;--shift1:clamp(140px,18vw,250px)}
+.flip-card{position:absolute;top:50%;left:50%;width:clamp(210px,24vw,320px);aspect-ratio:2/3;cursor:pointer;transition:transform .75s cubic-bezier(.32,.72,0,1),filter .75s ease,opacity .75s ease;will-change:transform}
+.flip-card.pos-0{transform:translate(-50%,-50%) scale(1);z-index:30}
+.flip-card.pos-l{transform:translate(calc(-50% - var(--shift1)),-50%) rotateY(28deg) scale(.8);z-index:20;filter:brightness(.5)}
+.flip-card.pos-r{transform:translate(calc(-50% + var(--shift1)),-50%) rotateY(-28deg) scale(.8);z-index:20;filter:brightness(.5)}
+.flip-card.pos-back{transform:translate(-50%,-56%) scale(.62);z-index:5;filter:brightness(.25)}
 .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.1,.2,1)}
 .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
 .flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-.flip-front{outline:1px solid var(--ink);outline-offset:-1px}
-.flip-front img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transition:filter .4s ease}
-.flip-card:hover .flip-front img{filter:grayscale(0)}
-.flip-front .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.05) 34%,rgba(0,0,0,.78) 100%)}
-.flip-front .num{position:absolute;top:16px;left:18px;font-family:var(--anton);font-size:40px;line-height:1;color:var(--blue-lt)}
-.flip-front .fbody{position:absolute;left:18px;right:18px;bottom:16px;color:#fff}
-.flip-front .ft{font-family:var(--anton);font-size:clamp(24px,2.2vw,30px);line-height:1;text-transform:uppercase}
-.flip-front .fd{margin-top:8px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78)}
-.flip-front .hint{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-lt)}
+.flip-front{outline:1px solid rgba(255,255,255,.3);outline-offset:-1px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.flip-front img{width:100%;height:100%;object-fit:cover;display:block}
+.flip-front .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.28) 55%,rgba(0,0,0,.66) 100%)}
+.flip-front .num{position:absolute;bottom:12px;left:16px;font-family:var(--anton);font-size:30px;line-height:1;color:var(--blue-lt);opacity:0;transition:opacity .5s}
+.flip-card.pos-l .num,.flip-card.pos-r .num{opacity:1}
+.flip-front .ctag{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px 12px;white-space:nowrap;opacity:0;transition:opacity .5s}
+.flip-card.pos-0 .ctag{opacity:1}
+.stage-title{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;pointer-events:none;padding:0 60px;transition:opacity .4s ease}
+.stage-title.hide{opacity:0}
+.st-name{font-family:var(--anton);font-size:clamp(40px,7vw,92px);line-height:.95;text-transform:uppercase;color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.65)}
+.st-rule{width:44px;height:2px;background:#fff;margin:20px 0 16px}
+.st-tag{font-size:clamp(13.5px,1.2vw,16px);color:rgba(255,255,255,.88);text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.st-hint{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-lt)}
+.stage-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:50;background:none;border:none;color:rgba(255,255,255,.85);font-size:34px;line-height:1;cursor:pointer;padding:16px 18px;transition:color .25s}
+.stage-arrow:hover{color:var(--blue-lt)}
+.stage-arrow.prev{left:clamp(2px,2vw,26px)}
+.stage-arrow.next{right:clamp(2px,2vw,26px)}
+.deck-dots{position:relative;z-index:45;display:flex;justify-content:center;gap:2px;margin-top:18px}
+.deck-dots .reel-dot::before{background:rgba(255,255,255,.35)}
+.deck-dots .reel-dot.on::before{background:var(--blue-lt)}
 .flip-back{background:var(--ink);color:#fff;transform:rotateY(180deg);padding:20px 18px;display:flex;flex-direction:column;overflow-y:auto}
 .flip-back .close{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .flip-back .beb{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-lt);margin-top:18px}
