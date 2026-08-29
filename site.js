@@ -57,7 +57,23 @@
     });
   });
 
-  /* Single-open accordions (divisions, FAQ) */
+  /* Division deck — click/tap flips a card; links on the back still work */
+  document.querySelectorAll('.flip-card').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      card.classList.toggle('flipped');
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flipped'); }
+    });
+  });
+  var flipM = location.search.match(/[?&]flip=(\d+)/);
+  if (flipM) {
+    var fc = document.querySelectorAll('.flip-card');
+    if (fc[+flipM[1]]) fc[+flipM[1]].classList.add('flipped');
+  }
+
+  /* Single-open accordions (FAQ) */
   document.querySelectorAll('[data-accordion]').forEach(function (acc) {
     var items = Array.prototype.slice.call(acc.querySelectorAll('[data-acc-item]'));
     items.forEach(function (item) {
